@@ -46,7 +46,7 @@ class PelangganAuthController extends Controller
         } elseif (Auth::guard('pelanggan')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->route('/menus');
         }
-        return redirect()->route('/menus');
+        return redirect()->route('cart');
     }
 
     /**

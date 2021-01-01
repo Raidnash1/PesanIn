@@ -7,10 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public function user() {
+    protected $guarded = ['id'];
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user');
     }
-    public function menu() {
+    public function menu()
+    {
         return $this->belongsTo(Menu::class, 'id_menu');
     }
     use HasFactory;

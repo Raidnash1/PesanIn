@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\Pelanggan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,30 +32,6 @@ class CartController extends Controller
     }
     public function addToCart(Request $request)
     {
-        // $itemExist = DB::table('carts')
-        //     ->where('id_pelanggan', Auth::pelanggan()->id)
-        //     ->where('id_menu', $request->id_menu)
-        //     ->get();
-        // // var_dump(sizeof($itemExist));
-        // // exit;
-        // if (sizeof($itemExist)) {
-        //     $count = $itemExist[0]->quantity + (int)$request->quantity;
-        //     DB::table('carts')->where('id', $itemExist[0]->id)->update([
-        //         'quantity' => $count,
-        //     ]);
-        //     return redirect("/products/show/$request->item_id");
-        // }
-        // DB::table('carts')->insert([
-        //     'id' => $request->id,
-        //     'id_pelanggan' => $request->id_pelanggan,
-        //     'id_menu' => $request->id_menu,
-        //     'quantity' => $request->quantity,
-        //     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        //     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        // ]);
-
-        // return redirect("/products/show/$request->id_menu");
-        // Periksa apakah pengguna sudah login
         if (Auth::guard('pelanggan')->check()) {
             $itemExist = DB::table('carts')
                 ->where('id_pelanggan', Auth::guard('pelanggan')->id())
@@ -103,22 +81,53 @@ class CartController extends Controller
 
     public function checkout()
     {
-        $menus = DB::table('carts')
-            ->where('id_user', Auth::user()->id)
+        $carts = Cart::with(['Menu', 'Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
+            ->get();
+        $order = Order::with(['Menu', 'Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
+            ->get();
+        $pelanggan = Order::with(['Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
             ->get();
 
-        foreach ($menus as $menu) {
+        $totalHarga = $carts->sum(function ($cart) {
+            return $cart->menu->price * $cart->quantity;
+        });
+        foreach ($carts as $menu) {
             DB::table('orders')->insert([
                 'id_menu' => $menu->id_menu,
-                'id_user' => $menu->id_user,
+                'id_pelanggan' => $menu->id_pelanggan,
                 'quantity' => $menu->quantity,
+                'total_harga' => $totalHarga,
                 'status' => 'pending',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
+
             DB::table('carts')->where('id', $menu->id)->delete();
         }
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
 
-        return redirect("/cart");
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $order->id,
+                'gross_amount' => $order->total_harga,
+            ),
+            'customer_details' => array(
+                'first_name' => $pelanggan->nama,
+                'email' => $pelanggan->email,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return view('user.cart.index', [
+            'order' => $order,
+            'snapToken' => $snapToken,
+        ]);
     }
 }

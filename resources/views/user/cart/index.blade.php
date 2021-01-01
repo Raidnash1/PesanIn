@@ -1,5 +1,5 @@
 <x-guest-layout>
-@push('datatable-styles')
+    @push('datatable-styles')
         <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/scrollable.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatables.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatable-extension.css') }}">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+    {{-- <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
         tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -154,6 +154,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 </x-guest-layout>
