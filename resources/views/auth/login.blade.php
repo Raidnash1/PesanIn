@@ -32,7 +32,7 @@
                                 </div>
                             @endif
 
-                            <label class="col-form-label">Alamat Email</label>
+                            <label class="col-form-label">Nama</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -46,7 +46,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" type="email" name="email" placeholder="contoh@gmail.com"
+                                <input class="form-control" name="nama_kedai" placeholder="Kedai Kita"
                                     autofocus required>
                             </div>
 

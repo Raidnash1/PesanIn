@@ -9,10 +9,6 @@
     <title>PesanIn</title>
 
     <meta name="title" content="PesanIn">
-    <meta name="description"
-        content="  Restawrant adalah restoran yang menyediakan berbagai macam kategori makanan mulai dari minuman,
-                        dessert dan lain lain dengan harga kaki lima namun rasanya bintang lima. Outlet kita selalu
-                        rame, jadi jangan lupa reservasi ya!">
     <link rel="icon" href="{{ url('cuba/assets/images/favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ url('cuba/assets/images/icon-192.png') }}" type="image/x-icon">
 
@@ -88,12 +84,12 @@
                 <span class="fs-3 fw-bold">PesanIn</span>
             </a>
 
-            <ul class="nav me-auto">
+            <!-- <ul class="nav me-auto">
                 <li class="nav-item me-2">
                     <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
                 </li>
                 <li class="nav-item me-2">
-                    <a href="/#tentang-kami" class="nav-link link-dark text-grey px-2">Dashboard</a>
+                    <a href="/" class="nav-link link-dark text-grey px-2">Dashboard</a>
                 </li>
                 <li class="nav-item me-2">
                     <a href="{{ route('menus.index') }}" class="nav-link link-dark text-grey px-2">Menu</a>
@@ -101,9 +97,9 @@
                 <li class="nav-item me-2">
                     <a href="" class="nav-link link-dark text-grey px-2">Transaksi</a>
                 </li>
-            </ul>
+            </ul> -->
 
-            <button class="btn btn-warning text-white me-2 px-5 fw-500" onclick="location.href='/login'" type="button">
+            <button class="btn btn-warning text-white me-2 px-5 fw-500" onclick="location.href='{{ route('login') }}'" type="button">
                 <i class="fas"></i> Masuk </button>
             <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500" onclick="location.href='/'"
                 type="button"> <i class="fas"></i> Daftar </button>

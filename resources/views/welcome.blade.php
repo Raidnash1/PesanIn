@@ -41,54 +41,6 @@
         </div>
     </section>
 
-    <!-- ------------------------ Menu Card Section ------------------------ -->
-    <section class="my-100">
-        <div class="container">
-            <div class="row mt-5 text-center">
-                <small class="text-warning text-uppercase fw-bold">Hidangan Spesial buat Kamu dan Orang Spesial</small>
-                <h1 class="fw-bold">Coba menu spesial di kedai kesayangan mu hari ini!</h1>
-                <p>Jangan lupa buat pesan di website kami ya, kalau masih kepo sama kedai yang ada bisa liat liat
-                    dulu kok</p>
-            </div>
-            <div class="row mt-4">
-                <div class="container">
-                    <div class="swiper menu-swiper">
-                        <div class="swiper-wrapper">
-                            @forelse ($menus as $menu)
-                                <div class="swiper-slide">
-                                    <div class="card">
-                                        <img src="{{ Storage::url($menu->image) }}"
-                                            class="card-img-top card-img-top-landing-page" />
-                                        <div class="card-body">
-                                            <h5 class="card-title fw-bold"> {{ $menu->name }}</h5>
-                                            <div class="category-card-description-wrapper">
-                                                <p class="card-text category-card-description" style="font-size: 13px;">
-                                                    {{ $menu->description }}
-                                                </p>
-                                            </div>
-                                            <hr>
-                                            <h5 class="fw-semibold">Rp.{{ $menu->price }}.000,00</h5>
-                                        </div>
-                                    </div>
-                                </div>
-                            @empty
-                                <p>gak ada kedai euy</p>
-                            @endforelse
-                        </div>
-                    </div>
-                </div>
-                <div class="container mt-4">
-                    <div class="row">
-                        <a href="{{ url('/menus') }}"
-                            class="btn btn-warning text-white px-4 mx-auto text-center col-10 col-md-3 my-3 fw-bold">Lihat
-                            Semua
-                            &nbsp; <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ------------------------ CTA Social Media Section ------------------------ -->
     <section>
         <div class="container mb-5">
