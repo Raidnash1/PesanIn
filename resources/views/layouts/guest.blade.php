@@ -6,9 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>PesanIn</title>
+    <title>Restawrant — Harga Kaki Lima Rasa Kaki Lima!</title>
 
-    <meta name="title" content="PesanIn">
+    <meta name="title" content="Restawrant — Harga Kaki Lima Rasa Kaki Lima!">
+    <meta name="description" content="  Restawrant adalah restoran yang menyediakan berbagai macam kategori makanan mulai dari minuman,
+                        dessert dan lain lain dengan harga kaki lima namun rasanya bintang lima. Outlet kita selalu
+                        rame, jadi jangan lupa reservasi ya!">
     <link rel="icon" href="{{ url('cuba/assets/images/favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ url('cuba/assets/images/icon-192.png') }}" type="image/x-icon">
 
@@ -32,7 +35,7 @@
     <!-- ------------------------ Mobile Header Section ------------------------ -->
     <nav class="navbar navbar-light bg-white d-block d-sm-block d-md-block d-lg-none py-3 border-bottom">
         <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="#">PesanIn</a>
+            <a class="navbar-brand fw-bold" href="#">🍣 Restawrant</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
                 aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -41,7 +44,7 @@
                 aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title fw-bold" id="offcanvasNavbarLabel">
-                        PesanIn
+                        🍣 Restawrant
                     </h5>
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                         aria-label="Close"></button>
@@ -78,32 +81,53 @@
     </nav>
 
     <!-- ------------------------ Double Header Section ------------------------ -->
-    <header class="py-3 mb-4 border-bottom d-none d-sm-none d-md-none d-lg-block bg-white sticky-top">
-        <div class="container d-flex flex-wrap justify-content-center">
-            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                <span class="fs-3 fw-bold">PesanIn</span>
-            </a>
-
-            <!-- <ul class="nav me-auto">
+    <nav class="py-1 bg-white border-bottom d-none d-sm-none d-md-none d-lg-block text-grey">
+        <div class="container d-flex flex-wrap fs-15">
+            <ul class="nav me-auto">
                 <li class="nav-item me-2">
-                    <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
+                    <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Beranda</a>
                 </li>
                 <li class="nav-item me-2">
-                    <a href="/" class="nav-link link-dark text-grey px-2">Dashboard</a>
+                    <a href="/#tentang-kami" class="nav-link link-dark text-grey px-2">Tentang Kami</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a href="{{ route('categories.index') }}" class="nav-link link-dark text-grey px-2">Kategori</a>
                 </li>
                 <li class="nav-item me-2">
                     <a href="{{ route('menus.index') }}" class="nav-link link-dark text-grey px-2">Menu</a>
                 </li>
                 <li class="nav-item me-2">
-                    <a href="" class="nav-link link-dark text-grey px-2">Transaksi</a>
+                    <a href="/#galeri-outlet" class="nav-link link-dark text-grey px-2">Galeri Outlet</a>
                 </li>
-            </ul> -->
-
-            <button class="btn btn-warning text-white me-2 px-5 fw-500" onclick="location.href='{{ route('login') }}'" type="button">
-                <i class="fas"></i> Masuk </button>
-            <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500" onclick="location.href='/'"
-                type="button"> <i class="fas"></i> Daftar </button>
+            </ul>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link link-dark text-grey px-2 no-effect-hover">Nomor Telepon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link-dark text-grey px-2 no-effect-hover">|</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://wa.me/+628123456789" class="nav-link link-dark text-grey px-2" target="_blank">
+                        +628123456789</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://wa.me/+628987654321" target="_blank"
+                        class="nav-link link-dark text-grey px-2">+628987654321</a>
+                </li>
+            </ul>
         </div>
+    </nav>
+
+    <header class="py-3 mb-4 border-bottom d-none d-sm-none d-md-none d-lg-block bg-white sticky-top">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <span class="fs-3 fw-bold">🍣 Restawrant</span>
+            </a>
+            <button class="btn btn-warning text-white me-2 px-5 fw-500"
+                onclick="location.href='http://127.0.0.1:8000/reservation/step-one'" type="button"> <i
+                    class="fas fa-calendar-plus"></i> &nbsp; &nbsp; Buat
+                Reservasi</button>
         </div>
     </header>
 
@@ -115,16 +139,73 @@
     <!-- --------------------------- Footer Section ---------------------------- -->
     <footer class="py-5">
         <div class="container">
-            <div class="row text-black">
-                <div class="col-md-6">
-                    <h4 class="fw-bold text-black">PesanIn - Makanan Segera dalam Genggaman Anda</h4>
-                    <p class="text-black">
-                        Website pemesanan makanan dine-in yang praktis bagi pelanggan dan mengurangi beban kerja kasir
-                        dengan otomatisasi proses pemesanan.
+            <div class="row text-white">
+                <div class="col-md-6 border-end">
+                    <h4 class="fw-bold">🍣 Restawrant — Harga kaki lima rasa bintang lima!</h4>
+                    <p class="">
+                        Restawrant adalah restoran yang menyediakan berbagai macam kategori makanan mulai dari minuman,
+                        dessert dan lain lain dengan harga kaki lima namun rasanya bintang lima. Outlet kita selalu
+                        rame, jadi jangan lupa reservasi ya!
                     </p>
                     <small class="d-block mb-3">
-                        &copy; Kelompok 32
+                        &copy; 2022 Syauqizaidan — Made with laravel 9.4.1 and bootstrap 5.2.0
                     </small>
+                </div>
+
+                <div class="col-6 col-md ms-0 ms-md-4">
+                    <h4 class="fw-bold mb-3">Navigasi Cepat</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="/userlisting?srczz=&katfilt=6901">
+                                Beranda
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="/userlisting?srczz=&katfilt=6905">
+                                Tentang Kami
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="/userlisting?srczz=&katfilt=6904">
+                                Kategori
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="/userlisting?srczz=&katfilt=6902">
+                                Menu
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="/userlisting?srczz=&katfilt=6903">
+                                Galeri Outlet
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6 col-md">
+                    <h4 class="fw-bold mb-3">Sosial Media</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="#">
+                                <i class="fab fa-whatsapp"></i> &nbsp; Whatsapp
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="#" target="_blank">
+                                <i class="fab fa-instagram"></i> &nbsp; Instagram
+                            </a>
+                        </li>
+                        <li class="mb-1">
+                            <a class="link-light text-decoration-none" href="#" target="_blank">
+                                <i class="fab fa-twitter"></i> &nbsp;Twitter
+                            </a>
+                        </li>
+                        <li class="mb-5 mb-md-1">
+                            <a class="link-light text-decoration-none" href="#" target="_blank">
+                                <i class="fab fa-facebook-square"></i> &nbsp; Facebook
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

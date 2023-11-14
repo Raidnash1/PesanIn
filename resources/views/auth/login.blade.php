@@ -8,7 +8,7 @@
     <meta name="title" content="Restawrant —  Admin Management Dashboard">
     <link rel="icon" href="{{ url('cuba/assets/images/favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ url('cuba/assets/images/icon-192.png') }}" type="image/x-icon">
-    <title>Masuk Aplikasi - Restawrant</title>
+    <title>Masuk Aplikasi - PesanIn</title>
     @include('includes.backend.style')
 </head>
 
@@ -17,10 +17,11 @@
         <div class="row">
             <div class="col-xl-12 p-0">
                 <div class="login-card">
-                    <div class="login-main col-4 col-md-4">
+                    <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('login') }}">
                             @csrf
-                            <h3 class"m-auto">Login PesanIn</h3>
+                            <h4>Login untuk masuk dashboard</h4>
+                            <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger py-1 mb-1">
@@ -32,7 +33,7 @@
                                 </div>
                             @endif
 
-                            <label class="col-form-label">Nama</label>
+                            <label class="col-form-label">Alamat Email</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -46,7 +47,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" name="nama_kedai" placeholder="Kedai Kita"
+                                <input class="form-control" type="email" name="email" placeholder="contoh@gmail.com"
                                     autofocus required>
                             </div>
 
@@ -70,11 +71,16 @@
                             </div>
 
                             <div class="form-group mb-0">
-                                <a href"#" class"ml-4"><b>Lupa sandi</b></a>
-                                <a href"#">Register</a>
-                                <button class="btn btn-primary btn-block" type="submit">Masuk</button>
+                                <div class="checkbox p-0">
+                                    <input id="checkbox1" type="checkbox" name="remember">
+                                    <label class="text-muted" for="checkbox1">Ingat Password</label>
+                                </div>
+                                <button class="btn btn-primary btn-block" type="submit">Masuk Sekarang ⇾ </button>
+
                             </div>
+                            <a class="dropdown-item" href="#">Forgot password?</a>
                         </form>
+
                     </div>
 
                 </div>

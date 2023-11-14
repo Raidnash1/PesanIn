@@ -11,12 +11,11 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        // $menus = Menu::take(8)->get();
+        $menus = Menu::take(8)->get();
 
-        // $categories = Category::all();
+        $categories = Category::all();
 
-        // return view('welcome', compact('menus', 'categories'));
-        return view('welcome');
+        return view('welcome', compact('menus', 'categories'));
     }
 
     public function thankyou()
