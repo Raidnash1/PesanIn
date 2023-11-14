@@ -33,5 +33,35 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/tables', TableController::class);
     Route::resource('/reservations', ReservationController::class);
 });
+// transaction
+Route::controller(TransactionController::class)->group(function () {
+    Route::get("/transaction", "index")->can("is_admin");
+    Route::get("/transaction/add_outcome", "addOutcomeGet")->can("is_admin");
+    Route::post("/transaction/add_outcome", "addOutcomePost")->can("is_admin");
+    Route::get("/transaction/edit_outcome/{transaction}", "editOutcomeGet")->can("is_admin");
+    Route::post("/transaction/edit_outcome/{transaction}", "editOutcomePost")->can("is_admin");
+});
+// Order
+Route::controller(OrderController::class)->group(function () {
+    Route::get("/order/order_data", "orderData");
+    Route::get("/order/order_history", "orderHistory");
+    Route::get("/order/order_data/{status_id}", "orderDataFilter");
+    Route::get("/order/data/{order}", "getOrderData")->can("my_real_order", "order");
+    Route::get("/order/getProof/{order}", "getProofOrder")->can("my_real_order", "order");
 
+
+    // customer only
+    Route::get("/order/make_order/{product:id}", "makeOrderGet")->can("create_order", App\Models\Order::class);
+    Route::post("/order/make_order/{product:id}", "makeOrderPost")->can("create_order", App\Models\Order::class);
+    Route::get("/order/edit_order/{order}", "editOrderGet")->can("edit_order", "order");
+    Route::post("/order/edit_order/{order}", "editOrderPost")->can("edit_order", "order");
+    Route::get("/order/delete_proof/{order}", "deleteProof")->can("delete_proof", "order");
+    Route::post("/order/cancel_order/{order}", "cancelOrder")->can("cancel_order", "order");
+    Route::post("/order/upload_proof/{order}", "uploadProof")->can("upload_proof", "order");
+
+    // admin only
+    Route::post("/order/reject_order/{order}/{product}", "rejectOrder")->can("reject_order", App\Models\Order::class);
+    Route::post("/order/end_order/{order}/{product}", "endOrder")->can("end_order", App\Models\Order::class);
+    Route::post("/order/approve_order/{order}/{product}", "approveOrder")->can("approve_order", App\Models\Order::class);
+});
 require __DIR__ . '/auth.php';

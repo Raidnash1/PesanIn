@@ -117,6 +117,31 @@
                     </ul>
                 </li>
 
+                <li class="sidebar-main-title">
+                    <div>
+                        <h6>Kelola Transaksi</h6>
+                        <p>Data Transaksi</p>
+                    </div>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title" href="#">
+                        <i data-feather="users"></i>
+                        <span>Data Transaksi</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="/order/order_data">
+                                Order Data
+                            </a>
+                        </li>
+                        <li>
+                            <a href=""/order/order_history"">
+                                Tambah Data Meja Baru
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
