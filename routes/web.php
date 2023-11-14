@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminController;
-use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\MenuController;
-use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Admin\TableController;
-use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
-use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
-use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
-use App\Http\Controllers\Frontend\WelcomeController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\TableController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
+use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
+use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
 
 
 Route::get('/', [WelcomeController::class, 'index']);
@@ -35,7 +38,7 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
 });
 // transaction
 Route::controller(TransactionController::class)->group(function () {
-    Route::get("/transaction", "index")->can("is_admin");
+    Route::get("/transaction", "index");
     Route::get("/transaction/add_outcome", "addOutcomeGet")->can("is_admin");
     Route::post("/transaction/add_outcome", "addOutcomePost")->can("is_admin");
     Route::get("/transaction/edit_outcome/{transaction}", "editOutcomeGet")->can("is_admin");

@@ -130,7 +130,7 @@ class OrderController extends Controller
     }
 
 
-    public function rejectOrder(Request $request, Order $order, Product $product)
+    public function rejectOrder(Request $request, Order $order, Menu $menus)
     {
         if ($request->refusal_reason == "") {
             $message = "Refusal reason cannot be empty!";
@@ -169,7 +169,7 @@ class OrderController extends Controller
 
         if ($order->isDirty()) {
             if ($order->getOriginal("status_id") == 1) {
-                $this->stockReturn($order, $product);
+                $this->stockReturn($order, $menus);
             }
 
             $order->save();
@@ -184,17 +184,17 @@ class OrderController extends Controller
     }
 
 
-    private function stockReturn(Order $order, Product $product)
+    private function stockReturn(Order $order, Menu $menus)
     {
-        $product->stock = $product->stock + $order->quantity;
+        $menus->stock = $menus->stock + $order->quantity;
 
-        if ($product->isDirty()) {
-            $product->save();
+        if ($menus->isDirty()) {
+            $menus->save();
         }
     }
 
 
-    public function approveOrder(Order $order, Product $product)
+    public function approveOrder(Order $order, Menu $menus)
     {
         if ($order->status_id == 1) {
             $message = "Order status is already approved by admin";
@@ -224,7 +224,7 @@ class OrderController extends Controller
             return redirect("/order/order_data");
         }
 
-        if ($product->stock - $order->quantity < 0) {
+        if ($menus->stock - $order->quantity < 0) {
             $message = "Quantity order is out of stock";
 
 
@@ -245,10 +245,10 @@ class OrderController extends Controller
         }
 
         // Reduce product stock
-        $product->stock = $product->stock - $order->quantity;
+        $menus->stock = $menus->stock - $order->quantity;
 
-        if ($product->isDirty()) {
-            $product->save();
+        if ($menus->isDirty()) {
+            $menus->save();
         }
 
         $message = "Order approved successfully!";
@@ -258,7 +258,7 @@ class OrderController extends Controller
     }
 
 
-    public function endOrder(Order $order, Menu $menu)
+    public function endOrder(Order $order, Menu $menus)
     {
         if ($order->status->order_status == "done") {
             $message = "The order has already succeded by admin!";
@@ -296,13 +296,13 @@ class OrderController extends Controller
 
         // add point to user
         $user = User::find($order->user_id);
-        $point_total = ($point_rules[$product->id] * (int)$order->quantity) + $user->point;
+        $point_total = ($point_rules[$menus->id] * (int)$order->quantity) + $user->point;
         $user->point = $point_total;
         $user->save();
 
         $transactional_data = [
             "category_id" => 1,
-            "description" => "sales of {$order->quantity} unit of product {$product->product_name}",
+            "description" => "sales of {$order->quantity} unit of product {$menus->product_name}",
             "income" => $order->total_price,
             "outcome" => null,
         ];

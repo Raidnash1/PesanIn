@@ -131,13 +131,27 @@
                     </a>
                     <ul class="sidebar-submenu">
                         <li>
+                            <a href="/transaction">
+                                Order Data
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title" href="#">
+                        <i data-feather="users"></i>
+                        <span>Data Order</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
                             <a href="/order/order_data">
                                 Order Data
                             </a>
                         </li>
                         <li>
-                            <a href=""/order/order_history"">
-                                Tambah Data Meja Baru
+                            <a href="/order/order_history">
+                                Order History
                             </a>
                         </li>
                     </ul>

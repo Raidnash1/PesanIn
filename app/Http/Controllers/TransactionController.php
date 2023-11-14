@@ -43,7 +43,7 @@ class TransactionController extends Controller
 
         $message = "Transaction created successfully!";
 
-        myFlasherBuilder(message: $message, success: true);
+
 
         return redirect("/transaction");
     }
@@ -79,13 +79,13 @@ class TransactionController extends Controller
 
             $message = "Transaction updated successfully!";
 
-            myFlasherBuilder(message: $message, success: true);
+
 
             return redirect("/transaction");
         } else {
             $message = "Action failed, no changes detected!";
 
-            myFlasherBuilder(message: $message, failed: true);
+
 
             return back();
         }
