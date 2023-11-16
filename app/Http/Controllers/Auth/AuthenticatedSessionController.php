@@ -20,6 +20,11 @@ class AuthenticatedSessionController extends Controller
         return view('auth.login');
     }
 
+    public function createPelanggan()
+    {
+        return view('auth.login-pelanggan');
+    }
+
     /**
      * Handle an incoming authentication request.
      *
@@ -27,6 +32,15 @@ class AuthenticatedSessionController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(LoginRequest $request)
+    {
+        $request->pelangganAuthenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function storePelanggan(LoginRequest $request)
     {
         $request->authenticate();
 

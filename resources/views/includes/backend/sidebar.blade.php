@@ -26,136 +26,48 @@
                     </a>
                 </li>
 
-                <li class="sidebar-main-title">
-                    <div>
-                        <h6>Kelola Kategori & Menu</h6>
-                        <p>Data Kategori & Menu</p>
-                    </div>
-                </li>
-
                 <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title" href="#">
-                        <i data-feather="grid"></i>
-                        <span>Kategori Makanan</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li class="active">
-                            <a href="{{ url('/admin/categories') }}">
-                                Data Kategori Makanan
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin/categories/create') }}">
-                                Tambah Kategori Makanan / Minuman
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title" href="#">
+                    <a class="sidebar-link sidebar-title link-nav" href="{{ url('/admin/menus') }}">
                         <i data-feather="coffee"></i>
-                        <span>Katalog Menu</span>
+                        <span>Menu</span>
                     </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="{{ url('/admin/menus') }}">
-                                Semua Daftar Menu
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin/menus/create') }}">
-                                Tambah Menu Baru
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-
-                <li class="sidebar-main-title">
-                    <div>
-                        <h6>Kelola Meja & Reservasi</h6>
-                        <p>Data Meja & Reservasi</p>
-                    </div>
                 </li>
 
                 <li class="sidebar-list">
                     <a class="sidebar-link sidebar-title" href="#">
                         <i data-feather="users"></i>
-                        <span>Data Meja Restawrant</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="{{ url('/admin/tables') }}">
-                                Daftar Meja di Restawrant
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin/tables/create') }}">
-                                Tambah Data Meja Baru
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title" href="#">
-                        <i data-feather="calendar"></i>
-                        <span>Daftar Reservasi</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="{{ url('/admin/reservations') }}">
-                                Semua Daftar Reservasi
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ url('/admin/reservations/create') }}">
-                                Tambah Jadwal Reservasi Baru
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="sidebar-main-title">
-                    <div>
-                        <h6>Kelola Transaksi</h6>
-                        <p>Data Transaksi</p>
-                    </div>
-                </li>
-
-                <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title" href="#">
-                        <i data-feather="users"></i>
-                        <span>Data Transaksi</span>
+                        <span>Transaksi</span>
                     </a>
                     <ul class="sidebar-submenu">
                         <li>
                             <a href="/transaction">
-                                Order Data
+                                Tambah Transaksi
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/transaction">
+                                Menunggu Pembayaran
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/transaction">
+                                Antri
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/transaction">
+                                Dimasak
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/transaction">
+                                Selesai
                             </a>
                         </li>
 
                     </ul>
                 </li>
-                <li class="sidebar-list">
-                    <a class="sidebar-link sidebar-title" href="#">
-                        <i data-feather="users"></i>
-                        <span>Data Order</span>
-                    </a>
-                    <ul class="sidebar-submenu">
-                        <li>
-                            <a href="/order/order_data">
-                                Order Data
-                            </a>
-                        </li>
-                        <li>
-                            <a href="/order/order_history">
-                                Order History
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
         <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

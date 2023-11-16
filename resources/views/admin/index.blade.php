@@ -205,7 +205,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>📅 • Jadwal Reservasi</span>
+                        <h5>📅 • Daftar tranzakz</span>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
@@ -219,35 +219,32 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($reservations as $item)
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex py-1 align-items-center">
-                                                    <div class="avatars mr-2">
-                                                        <div class="avatar ratio">
-                                                            <img style="object-fit: cover;
+
+                                    <tr>
+                                        <td>
+                                            <div class="d-flex py-1 align-items-center">
+                                                <div class="avatars mr-2">
+                                                    <div class="avatar ratio">
+                                                        <img style="object-fit: cover;
                                                                                                                     width: 40px;
                                                                                                                     height: 40px;"
-                                                                class="b-r-8"
-                                                                src="https://ui-avatars.com/api/?background=4466f2&color=fff&name={{ $item->first_name }}">
-                                                        </div>
+                                                            class="b-r-8" </div>
                                                     </div>
                                                     <div class="flex-fill">
-                                                        <div class="font-weight-bold"> {{ $item->first_name }}
-                                                            {{ $item->last_name }}</div>
+                                                        <div class="font-weight-bold"> </div>
                                                         <div class="text-muted">
-                                                            <a href="#" class="text-reset">{{ $item->email }}</a>
+                                                            <a href="#" class="text-reset"></a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </td>
-                                            <td>{{ $item->res_date }}</td>
-                                            <td>({{ $item->table->name }})</td>
-                                            <td>{{ $item->guest_number }}</td>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
 
-                                        </tr>
-                                    @empty
-                                    @endforelse
+                                    </tr>
+
+
                                 </tbody>
                                 <tfoot>
                                     <tr>

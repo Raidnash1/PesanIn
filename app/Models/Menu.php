@@ -15,13 +15,12 @@ class Menu extends Model
     {
         return $this->belongsToMany(Category::class, 'category_menu');
     }
-    public function order()
-    {
+    public function Order() {
         return $this->hasMany(Order::class);
     }
-
-    public function review()
-    {
-        return $this->hasMany(Review::class);
+    public function Cart() {
+        return $this->hasMany(Cart::class);
     }
+
+    
 }

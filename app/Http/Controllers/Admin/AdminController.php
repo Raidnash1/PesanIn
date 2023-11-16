@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $reservations = Reservation::all();
-        return view('admin.index', compact('reservations'));
+
+        return view('admin.index');
     }
 }

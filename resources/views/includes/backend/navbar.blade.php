@@ -26,7 +26,7 @@
                         href="{{ '/admin/reservations/create' }}">
                         <i data-feather="plus-square"></i>
                         <span class="d-none d-sm-none d-md-inline-block">
-                            Tambah Reservasi
+                            Tambah Tranzakziz
                         </span>
                     </a>
                 </li>

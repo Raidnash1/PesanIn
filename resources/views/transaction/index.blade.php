@@ -8,7 +8,6 @@
         <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatable-extension.css') }}">
     @endpush
 
-
     <div class="container-fluid">
         <div class="page-title">
             <div class="card card-absolute mt-5 mt-md-4">

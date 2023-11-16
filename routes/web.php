@@ -12,18 +12,19 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
-use App\Http\Controllers\Frontend\ReservationController as FrontendReservationController;
+use App\Http\Controllers\Frontend\CartController as FrontendCartController;
+
 
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
-Route::get('/reservation/step-one', [FrontendReservationController::class, 'stepOne'])->name('reservations.step.one');
-Route::post('/reservation/step-one', [FrontendReservationController::class, 'storeStepOne'])->name('reservations.store.step.one');
-Route::get('/reservation/step-two', [FrontendReservationController::class, 'stepTwo'])->name('reservations.step.two');
-Route::post('/reservation/step-two', [FrontendReservationController::class, 'storeStepTwo'])->name('reservations.store.step.two');
-Route::get('/thankyou', [WelcomeController::class, 'thankyou'])->name('thankyou');
+// Chart
+Route::get('/cart', [FrontendCartController::class, 'index']);
+Route::post('/carts/add', [CartController::class, 'addToCart']);
+Route::post('/carts/update', [CartController::class, 'updateCart']);
+Route::post('/carts/checkout', [CartController::class, 'checkout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -36,6 +37,24 @@ Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/tables', TableController::class);
     Route::resource('/reservations', ReservationController::class);
 });
+
+// Bagian User
+
+Route::get('/profile', [UserController::class, 'userProfile']);
+Route::get('/setting', [UserController::class, 'userSetting']);
+Route::post('/update', [UserController::class, 'userUpdate']);
+
+Route::get('/orders', [OrderController::class, 'userShow']);
+
+
+
+Route::get('/wishlist', [WishlistController::class, 'index']);
+Route::post('/wishlists/add', [WishlistController::class, 'addToWishlist']);
+Route::post('/wishlists/update', [WishlistController::class, 'updateWishlist']);
+Route::delete('/wishlists/delete/{id}', [WishlistController::class, 'destroy'])->name('delete')->middleware('auth');
+
+
+
 // transaction
 Route::controller(TransactionController::class)->group(function () {
     Route::get("/transaction", "index");
@@ -44,27 +63,5 @@ Route::controller(TransactionController::class)->group(function () {
     Route::get("/transaction/edit_outcome/{transaction}", "editOutcomeGet")->can("is_admin");
     Route::post("/transaction/edit_outcome/{transaction}", "editOutcomePost")->can("is_admin");
 });
-// Order
-Route::controller(OrderController::class)->group(function () {
-    Route::get("/order/order_data", "orderData");
-    Route::get("/order/order_history", "orderHistory");
-    Route::get("/order/order_data/{status_id}", "orderDataFilter");
-    Route::get("/order/data/{order}", "getOrderData")->can("my_real_order", "order");
-    Route::get("/order/getProof/{order}", "getProofOrder")->can("my_real_order", "order");
 
-
-    // customer only
-    Route::get("/order/make_order/{product:id}", "makeOrderGet")->can("create_order", App\Models\Order::class);
-    Route::post("/order/make_order/{product:id}", "makeOrderPost")->can("create_order", App\Models\Order::class);
-    Route::get("/order/edit_order/{order}", "editOrderGet")->can("edit_order", "order");
-    Route::post("/order/edit_order/{order}", "editOrderPost")->can("edit_order", "order");
-    Route::get("/order/delete_proof/{order}", "deleteProof")->can("delete_proof", "order");
-    Route::post("/order/cancel_order/{order}", "cancelOrder")->can("cancel_order", "order");
-    Route::post("/order/upload_proof/{order}", "uploadProof")->can("upload_proof", "order");
-
-    // admin only
-    Route::post("/order/reject_order/{order}/{product}", "rejectOrder")->can("reject_order", App\Models\Order::class);
-    Route::post("/order/end_order/{order}/{product}", "endOrder")->can("end_order", App\Models\Order::class);
-    Route::post("/order/approve_order/{order}/{product}", "approveOrder")->can("approve_order", App\Models\Order::class);
-});
 require __DIR__ . '/auth.php';

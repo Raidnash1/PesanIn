@@ -179,6 +179,7 @@
                     </div>
                     <div class="row g-3">
                         @foreach ($menus as $menu)
+                        <form action=""> 
                             <div class="col-md-4">
                                 <div class="card card-borderless-shadow card-min-height">
                                     <img src="{{ Storage::url($menu->image) }}"
@@ -195,6 +196,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
                         @endforeach
                     </div>
                 </div>
