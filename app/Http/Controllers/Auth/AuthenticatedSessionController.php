@@ -22,7 +22,7 @@ class AuthenticatedSessionController extends Controller
 
     public function createPelanggan()
     {
-        return view('auth.login-pelanggan');
+        return view('auth.loginPelanggan');
     }
 
     /**

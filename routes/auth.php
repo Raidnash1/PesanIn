@@ -15,7 +15,10 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('pelanggan/register', [RegisteredUserController::class, 'createPelanggan'])
+        ->name('register');
 
+    Route::post('pelanggan/register', [RegisteredUserController::class, 'storePelanggan']);
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
@@ -23,7 +26,7 @@ Route::middleware('guest')->group(function () {
 
     Route::get('pelanggan/login', [AuthenticatedSessionController::class, 'createPelanggan'])
         ->name('pelanggan');
-        
+
     Route::post('pelanggan/login', [AuthenticatedSessionController::class, 'storePelanggan']);
 
 

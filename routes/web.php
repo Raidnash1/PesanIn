@@ -48,12 +48,6 @@ Route::get('/orders', [OrderController::class, 'userShow']);
 
 
 
-Route::get('/wishlist', [WishlistController::class, 'index']);
-Route::post('/wishlists/add', [WishlistController::class, 'addToWishlist']);
-Route::post('/wishlists/update', [WishlistController::class, 'updateWishlist']);
-Route::delete('/wishlists/delete/{id}', [WishlistController::class, 'destroy'])->name('delete')->middleware('auth');
-
-
 
 // transaction
 Route::controller(TransactionController::class)->group(function () {

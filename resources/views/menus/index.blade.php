@@ -179,24 +179,28 @@
                     </div>
                     <div class="row g-3">
                         @foreach ($menus as $menu)
-                        <form action=""> 
-                            <div class="col-md-4">
-                                <div class="card card-borderless-shadow card-min-height">
-                                    <img src="{{ Storage::url($menu->image) }}"
-                                        class="card-img-top card-img-top-menus" />
-                                    <div class="card-body">
-                                        <h5 class="card-title fw-bold"> {{ $menu->name }}</h5>
-                                        <div class="category-card-description-wrapper">
-                                            <p class="card-text category-card-description" style="font-size: 13px;">
-                                                {{ $menu->description }}
-                                            </p>
+                            <form action="">
+                                <div class="col-md-4">
+                                    <div class="card card-borderless-shadow card-min-height">
+                                        <img src="{{ Storage::url($menu->image) }}"
+                                            class="card-img-top card-img-top-menus" />
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold"> {{ $menu->name }}</h5>
+                                            <div class="category-card-description-wrapper">
+                                                <p class="card-text category-card-description"
+                                                    style="font-size: 13px;">
+                                                    {{ $menu->description }}
+                                                </p>
+                                            </div>
+                                            <hr>
+                                            <h5 class="fw-semibold">Rp.{{ $menu->price }},00</h5>
                                         </div>
-                                        <hr>
-                                        <h5 class="fw-semibold">Rp.{{ $menu->price }}.000,00</h5>
+                                        <input class="form-control" type="hidden" name="id_menu"
+                                            value="{{ $menu->id_menu }}">
+                                        <input class="btn btn-primary" type="submit" value="Tambah Keranjang">
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
                         @endforeach
                     </div>
                 </div>
