@@ -1,13 +1,18 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Auth\KedaiAuthController;
+use App\Http\Controllers\Auth\PelangganAuthController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\RegisteredKedaiController;
+use App\Http\Controllers\Auth\RegisteredPelangganController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
@@ -15,19 +20,11 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
-    Route::get('pelanggan/register', [RegisteredUserController::class, 'createPelanggan'])
-        ->name('register');
-
-    Route::post('pelanggan/register', [RegisteredUserController::class, 'storePelanggan']);
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
-    Route::get('pelanggan/login', [AuthenticatedSessionController::class, 'createPelanggan'])
-        ->name('pelanggan');
-
-    Route::post('pelanggan/login', [AuthenticatedSessionController::class, 'storePelanggan']);
 
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
@@ -41,6 +38,30 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
         ->name('password.update');
+});
+Route::group(['prefix' => 'kedai'], function () {
+    Route::get('register', [RegisteredKedaiController::class, 'create'])
+        ->name('register')->name('kedai.register');
+
+    Route::post('register', [RegisteredKedaiController::class, 'store'])->name('kedai.register');
+
+
+    Route::get('login', [KedaiAuthController::class, 'create'])
+        ->name('store')->name('kedai.login');
+
+    Route::post('login', [KedaiAuthController::class, 'login'])->name('kedai.login');
+});
+Route::group(['prefix' => 'pelanggan'], function () {
+    Route::get('register', [RegisteredPelangganController::class, 'create'])
+        ->name('register');
+
+    Route::post('register', [RegisteredPelangganController::class, 'store']);
+
+
+    Route::get('login', [PelangganAuthController::class, 'create'])
+        ->name('store');
+
+    Route::post('login', [PelangganAuthController::class, 'store']);
 });
 
 Route::middleware('auth')->group(function () {

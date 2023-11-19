@@ -16,6 +16,7 @@ return [
     'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+
     ],
 
     /*
@@ -39,6 +40,15 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
+        ],
+        'pelanggan' => [
+            'driver' => 'session',
+            'provider' => 'pelanggan',
+        ],
+
+        'kedai' => [
+            'driver' => 'session',
+            'provider' => 'kedai',
         ],
     ],
 
@@ -64,6 +74,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
 
+        ],
+        'pelanggan' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pelanggan::class,
+        ],
+
+        'kedai' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Kedai::class,
         ],
 
         // 'users' => [
@@ -91,6 +110,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'kedai' => [
+            'provider' => 'pelanggan',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'pelanggan' => [
+            'provider' => 'pelanggan',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

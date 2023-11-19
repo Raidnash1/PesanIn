@@ -23,7 +23,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if ($guard === 'pelanggan') {
+                    return redirect('/menus');
+                } elseif ($guard === 'kedai') {
+                    return redirect(RouteServiceProvider::HOME);
+                } else {
+                    return redirect(RouteServiceProvider::HOME);
+                }
             }
         }
 
