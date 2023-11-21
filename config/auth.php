@@ -115,7 +115,7 @@ return [
             'throttle' => 60,
         ],
         'kedai' => [
-            'provider' => 'pelanggan',
+            'provider' => 'kedai',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

@@ -18,7 +18,7 @@
             <div class="col-xl-12 p-0">
                 <div class="login-card">
                     <div class="login-main col-5 col-md-5">
-                        <form class="theme-form" method="POST" action="{{ route('login') }}">
+                        <form class="theme-form" method="POST" action="{{ route('kedai.login') }}">
                             @csrf
                             <h4>Login untuk masuk Kedai</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>

@@ -17,12 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
-    }
-
-    public function createPelanggan()
-    {
-        return view('auth.loginPelanggan');
+        return view('auth.loginKedai');
     }
 
     /**
@@ -40,14 +35,6 @@ class AuthenticatedSessionController extends Controller
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
-    public function storePelanggan(LoginRequest $request)
-    {
-        $request->authenticate();
-
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
 
     /**
      * Destroy an authenticated session.

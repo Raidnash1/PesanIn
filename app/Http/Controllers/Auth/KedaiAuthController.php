@@ -27,7 +27,7 @@ class kedaiAuthController extends Controller
 
     public function create()
     {
-        return view('auth.loginkedai');
+        return view('auth.loginKedai');
     }
 
     /**

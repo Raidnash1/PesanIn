@@ -37,7 +37,7 @@ class RegisteredKedaiController extends Controller
         $request->validate([
             'nama_kedai' => ['required', 'string', 'max:255'],
             'nama_pemilik' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:kedai'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'alamat' => ['required', 'string', 'max:255'],
             'telepon' => ['required'],
@@ -51,11 +51,11 @@ class RegisteredKedaiController extends Controller
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
         ]);
-        // return redirect('/login');
-        event(new Registered($kedai));
+        return redirect('kedai/login');
+        // event(new Registered($kedai));
 
-        Auth::login($kedai);
+        // Auth::login($kedai);
 
-        return redirect(RouteServiceProvider::HOME);
+        // return redirect(RouteServiceProvider::HOME);
     }
 }
