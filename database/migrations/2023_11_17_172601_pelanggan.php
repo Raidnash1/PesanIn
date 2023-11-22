@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kedai');
-            $table->string('name');
+            $table->foreignId('id_kedais');
+            $table->string('nama');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamps();
             //Contrain
-            $table->foreign('id_kedai')->references('id')->on('kedais');
+            $table->foreign('id_kedais')->references('id')->on('kedais');
         });
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pelanggan');
+        Schema::dropIfExists('pelanggans');
     }
 };

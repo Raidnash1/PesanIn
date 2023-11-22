@@ -97,13 +97,17 @@
                 <li class="nav-item me-2">
                     <a href="" class="nav-link link-dark text-grey px-2">Transaksi</a>
                 </li>
+                <li class="text-decoration-none">
             </ul>
-
+            <button class="btn btn-warning text-white me-2 px-5 fw-500"
+                onclick="location.href='{{ route('menus.index') }}'" type="button">
+                <i class="fas"></i> Keranjang </button>
             <button class="btn btn-warning text-white me-2 px-5 fw-500"
                 onclick="location.href='{{ route('kedai.login') }}'" type="button">
                 <i class="fas"></i> Masuk </button>
             <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
-                onclick="location.href='{{ route('kedai.register') }}'" type="button"> <i class="fas"></i> Daftar
+                onclick="location.href='{{ route('kedai.register') }}'" type="button"> <i class="fas"></i>
+                Daftar
             </button>
         </div>
         </div>

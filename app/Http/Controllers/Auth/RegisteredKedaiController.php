@@ -34,28 +34,29 @@ class RegisteredKedaiController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'nama_kedai' => ['required', 'string', 'max:255'],
-            'nama_pemilik' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:kedai'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'alamat' => ['required', 'string', 'max:255'],
-            'telepon' => ['required'],
-        ]);
+        return $request()->all();
+        // $request->validate([
+        //     'nama_kedai' => ['required', 'string', 'max:255'],
+        //     'nama_pemilik' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:kedai'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        //     'alamat' => ['required', 'string', 'max:255'],
+        //     'telepon' => ['required'],
+        // ]);
 
-        $kedai = Kedai::create([
-            'nama_kedai' => $request->nama_kedai,
-            'nama_pemilik' => $request->nama_pemilik,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'alamat' => $request->alamat,
-            'telepon' => $request->telepon,
-        ]);
-        return redirect('kedai/login');
-        // event(new Registered($kedai));
+        // $kedai = Kedai::create([
+        //     'nama_kedai' => $request->nama_kedai,
+        //     'nama_pemilik' => $request->nama_pemilik,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'alamat' => $request->alamat,
+        //     'telepon' => $request->telepon,
+        // ]);
+        // return redirect('kedai/login');
+        // // event(new Registered($kedai));
 
-        // Auth::login($kedai);
+        // // Auth::login($kedai);
 
-        // return redirect(RouteServiceProvider::HOME);
+        // // return redirect(RouteServiceProvider::HOME);
     }
 }

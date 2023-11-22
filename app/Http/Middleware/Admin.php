@@ -18,17 +18,21 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        // Ambil ID Kedai yang sudah login
-        $loggedInKedaiId = Auth::guard('kedai')->id();
-
-        // Ambil ID Kedai dari URL
-        $requestedKedaiId = $request->route('kedai');
-
-        // Periksa apakah Kedai yang sudah login sesuai dengan ID yang diminta
-        if ($loggedInKedaiId !== $requestedKedaiId) {
-            abort(403, 'Unauthorized');
+        if (!auth()->check() || !auth()->user()->role) {
+            abort(403);
         }
-
         return $next($request);
+        // // Ambil ID Kedai yang sudah login
+        // $loggedInKedaiId = Auth::guard('kedai')->id();
+
+        // // Ambil ID Kedai dari URL
+        // $requestedKedaiId = $request->route('kedai');
+
+        // // Periksa apakah Kedai yang sudah login sesuai dengan ID yang diminta
+        // if ($loggedInKedaiId !== $requestedKedaiId) {
+        //     abort(403, 'Unauthorized');
+        // }
+
+        // return $next($request);
     }
 }

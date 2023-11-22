@@ -18,9 +18,12 @@ return new class extends Migration
             $table->string('nama_kedai');
             $table->string('nama_pemilik');
             $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('role')->default(false);
             $table->string('alamat');
             $table->integer('telepon');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -32,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kedai');
+        Schema::dropIfExists('kedais');
     }
 };
