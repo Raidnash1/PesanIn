@@ -20,7 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('register') }}">
                             @csrf
-                            <h4>Login untuk masuk dashboard</h4>
+                            <h4>Registrasi untuk masuk dashboard</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())
@@ -32,8 +32,7 @@
                                     </ul>
                                 </div>
                             @endif
-
-                            <label class="col-form-label">Nama Kedai</label>
+                            <label class="col-form-label">Nama User</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -47,24 +46,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" type="text" id="nama_kedai" name="nama_kedai"
-                                    placeholder="PesanIn" autofocus required>
-                            </div>
-                            <label class="col-form-label">Nama Pemilik</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at"
-                                            width="16" height="16" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <circle cx="12" cy="12" r="4"></circle>
-                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-                                        </svg>
-                                    </span>
-                                </div>
-                                <input class="form-control" type="text" id="nama_pemilik" name="nama_pemilik"
+                                <input class="form-control" type="text" id="nama_user" name="nama_user"
                                     placeholder="Raid Nash" autofocus required>
                             </div>
                             <label class="col-form-label">Alamat Email</label>
@@ -91,8 +73,8 @@
                                     <span class="input-group-text" id="basic-addon1">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="icon icon-tabler icon-tabler-lock" width="16" height="16"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                             <rect x="5" y="11" width="14" height="10" rx="2"></rect>
                                             <circle cx="12" cy="16" r="1"></circle>

@@ -13,7 +13,8 @@
         <div class="left-header col horizontal-wrapper pl-0">
             <ul class="horizontal-menu">
                 <li class="mega-menu outside d-block d-md-none">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick=" event.preventDefault();
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick=" event.preventDefault();
                     document.getElementById('logout-form').submit();">
                         <i data-feather="log-out"></i>
                         <span>
@@ -22,8 +23,7 @@
                     </a>
                 </li>
                 <li class="level-menu outside">
-                    <a class="nav-link" style="background-color: #ffefbe"
-                        href="{{ '/admin/reservations/create' }}">
+                    <a class="nav-link" style="background-color: #ffefbe" href="{{ '/admin/reservations/create' }}">
                         <i data-feather="plus-square"></i>
                         <span class="d-none d-sm-none d-md-inline-block">
                             Tambah Tranzakziz
@@ -78,7 +78,7 @@
                             src="https://source.boringavatars.com/beam/120/{{ Auth::user()->name }}?square&colors=FAD089,FF9C5B,F5634A,ED303C,3B8183"
                             width="40px">
                         <div class="media-body">
-                            <span>{{ Auth::user()->name }}</span>
+                            <span>{{ Auth::user()->nama_user }}</span>
                             <p class="mb-0 font-roboto">🔑 Administrator
                                 <i class="middle fa fa-angle-down"></i>
                             </p>
@@ -86,7 +86,8 @@
                     </div>
                     <ul class="profile-dropdown onhover-show-div">
                         <li>
-                            <a href="{{ route('logout') }}" onclick=" event.preventDefault();
+                            <a href="{{ route('logout') }}"
+                                onclick=" event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                                 <i data-feather="log-out"></i>
                                 <span>Log out</span>

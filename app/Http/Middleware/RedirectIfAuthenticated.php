@@ -20,29 +20,29 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, ...$guards)
     {
 
-        $guards = empty($guards) ? [null] : $guards;
-
-        foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
-            }
-        }
-
-        return $next($request);
         // $guards = empty($guards) ? [null] : $guards;
 
         // foreach ($guards as $guard) {
         //     if (Auth::guard($guard)->check()) {
-        //         if ($guard === 'pelanggan') {
-        //             return redirect('/menus');
-        //         } elseif ($guard === 'kedai') {
-        //             return redirect(RouteServiceProvider::HOME);
-        //         } else {
-        //             return redirect(RouteServiceProvider::HOME);
-        //         }
+        //         return redirect(RouteServiceProvider::HOME);
         //     }
         // }
 
         // return $next($request);
+        $guards = empty($guards) ? [null] : $guards;
+
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                if ($guard === 'pelanggan') {
+                    return redirect('/menus');
+                } elseif ($guard === 'kedai') {
+                    return redirect('/menus');
+                } else {
+                    return redirect(RouteServiceProvider::HOME);
+                }
+            }
+        }
+
+        return $next($request);
     }
 }

@@ -49,13 +49,14 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row" method="POST"
-                                action="{{ route('admin.menus.update', $menu->id) }}" enctype="multipart/form-data">
+                            <form class="row" method="POST" action="{{ route('admin.menus.update', $menu->id) }}"
+                                enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="col-sm-12">
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
+                                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
                                             <label for="name">Nama Menu: <span class="text-danger">*</span></label>
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
@@ -66,10 +67,14 @@
                                                             stroke="currentColor" fill="none" stroke-linecap="round"
                                                             stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                            <rect x="5" y="3" width="14" height="18" rx="2"></rect>
-                                                            <line x1="9" y1="7" x2="15" y2="7"></line>
-                                                            <line x1="9" y1="11" x2="15" y2="11"></line>
-                                                            <line x1="9" y1="15" x2="13" y2="15"></line>
+                                                            <rect x="5" y="3" width="14" height="18" rx="2">
+                                                            </rect>
+                                                            <line x1="9" y1="7" x2="15"
+                                                                y2="7"></line>
+                                                            <line x1="9" y1="11" x2="15"
+                                                                y2="11"></line>
+                                                            <line x1="9" y1="15" x2="13"
+                                                                y2="15"></line>
                                                         </svg>
                                                     </span>
                                                 </div>
@@ -83,10 +88,10 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon1">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="icon icon-tabler icon-tabler-currency-dollar" width="20"
-                                                            height="20" viewBox="0 0 24 24" stroke-width="2"
-                                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                                            stroke-linejoin="round">
+                                                            class="icon icon-tabler icon-tabler-currency-dollar"
+                                                            width="20" height="20" viewBox="0 0 24 24"
+                                                            stroke-width="2" stroke="currentColor" fill="none"
+                                                            stroke-linecap="round" stroke-linejoin="round">
                                                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                                             <path
                                                                 d="M16.7 8a3 3 0 0 0 -2.7 -2h-4a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6h-4a3 3 0 0 1 -2.7 -2">
@@ -104,8 +109,9 @@
                                             {{-- upload foto --}}
                                             <div class="input-group mb-3">
                                                 <div class="custom-file">
-                                                    <input type="file" name="image" class="custom-file-input" id="image"
-                                                        aria-describedby="inputGroupFileAddon01" accept="image/*">>
+                                                    <input type="file" name="image" class="custom-file-input"
+                                                        id="image" aria-describedby="inputGroupFileAddon01"
+                                                        accept="image/*">>
                                                     <label class="custom-file-label" for="inputGroupFile01">Pilih file
                                                         gambar yang
                                                         akan kamu upload ..</label>
@@ -116,7 +122,8 @@
                                         <div class="form-group col-md-12">
                                             <label for="juimagedul">Kategori: <span class="text-danger">*</span></label>
                                             <div class="mt-1">
-                                                <select id="categories" name="categories[]" class="custom-select" multiple>
+                                                <select id="categories" name="categories[]" class="custom-select"
+                                                    multiple>
                                                     @foreach ($categories as $category)
                                                         <option value="{{ $category->id }}" @selected($menu->categories->contains($category))>
                                                             {{ $category->name }}</option>

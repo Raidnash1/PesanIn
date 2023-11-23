@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuStoreRequest;
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -18,7 +19,13 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menus = Menu::all();
+        // // Mengambil ID user yang sedang login
+        // $userId = auth()->id();
+
+        // // Mengambil menu berdasarkan ID user
+        // $menus = User::find($userId)->menus;
+        // $menus = Menu::all();
+        $menus = auth()->user()->menus;
         return view('admin.menus.index', compact('menus'));
     }
 
@@ -47,7 +54,8 @@ class MenuController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'image' => $image,
-            'price' => $request->price
+            'price' => $request->price,
+            'user_id' => $request->user_id,
         ]);
 
         if ($request->has('categories')) {
@@ -94,7 +102,8 @@ class MenuController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'image' => $image,
-            'price' => $request->price
+            'price' => $request->price,
+            'user_id' => $request->user_id,
         ]);
 
         if ($request->has('categories')) {

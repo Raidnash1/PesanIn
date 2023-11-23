@@ -17,14 +17,19 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
-    // protected $guarded = [
-    //     'id'
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
     // ];
+    public function menus()
+    {
+        return $this->hasMany(Menu::class);
+    }
+
+    protected $guarded = [
+        'id'
+    ];
 
     /**
      * The attributes that should be hidden for serialization.

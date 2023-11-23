@@ -15,14 +15,16 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('name');
             $table->text('description');
             $table->string('image');
             $table->integer('price');
             $table->timestamps();
+            //constraints
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
-
     /**
      * Reverse the migrations.
      *
