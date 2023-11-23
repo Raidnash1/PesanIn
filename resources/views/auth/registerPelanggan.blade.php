@@ -18,7 +18,7 @@
             <div class="col-xl-12 p-0">
                 <div class="login-card">
                     <div class="login-main col-5 col-md-5">
-                        <form class="theme-form" method="POST" action="{{ route('pelanggan/register') }}">
+                        <form class="theme-form" method="POST" action="{{ route('pelanggan.register') }}">
                             @csrf
                             <h4>Login untuk memesan</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>

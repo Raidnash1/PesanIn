@@ -23,10 +23,6 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
-    public function createPelanggan()
-    {
-        return view('auth.registerPelanggan');
-    }
 
     /**
      * Handle an incoming registration request.
@@ -38,14 +34,15 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'nama_user' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
-            'name' => $request->name,
+            'nama_user' => $request->nama_user,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'email_verified_at' => now(),
@@ -59,26 +56,5 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
-    }
-    public function storePelanggan(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'email_verified_at' => now(),
-            'remember_token' => Str::random(10),
-            'role' => 0
-
-        ]);
-        // return redirect('/login');
-
-        return redirect('pelanggan/login');
     }
 }

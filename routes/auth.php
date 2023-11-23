@@ -20,12 +20,11 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
+
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -53,16 +52,16 @@ Route::group(['prefix' => 'kedai'], function () {
 });
 Route::group(['prefix' => 'pelanggan'], function () {
     Route::get('register', [RegisteredPelangganController::class, 'create'])
-        ->name('register');
+        ->name('pelanggan.register');
 
-    Route::post('register', [RegisteredPelangganController::class, 'store']);
+    Route::post('register', [RegisteredPelangganController::class, 'store'])->name('pelanggan.register');
 
 
     Route::get('login', [PelangganAuthController::class, 'create'])
-        ->name('store');
+        ->name('create')->name('pelanggan.login');
 
     Route::post('login', [PelangganAuthController::class, 'store']);
-});
+})->name('pelanggan.login');
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
