@@ -1,5 +1,5 @@
 <x-guest-layout>
-
+    
     <!-- ------------------------   Reservation Step One Form Section ------------------------ -->
     <section class="my-5">
         <div class="container">

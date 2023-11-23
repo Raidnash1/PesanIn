@@ -13,19 +13,20 @@ class CartController extends Controller
 {
     public function index()
     {
-        $carts = Cart::with(['Menu', 'User'])->where('id_user', Auth::user()->id)
-            ->get();
-        $carts = DB::table('carts')
-            ->where('id_user', Auth::user()->id)
-            ->get();
-        $subtotal = 0;
-        foreach ($carts as $cart) {
-            $subtotal += $cart->menu->price * $cart->quantity;
-        }
-        return view('user.cart.index', [
-            'carts' => $carts,
-            'subtotal' => $subtotal,
-        ]);
+        // $carts = Cart::with(['Menu', 'User'])->where('id_user', Auth::user()->id)
+        //     ->get();
+        // $carts = DB::table('carts')
+        //     ->where('id_user', Auth::user()->id)
+        //     ->get();
+        // $subtotal = 0;
+        // foreach ($carts as $cart) {
+        //     $subtotal += $cart->menu->price * $cart->quantity;
+        // }
+        // return view('user.cart.index', [
+        //     'carts' => $carts,
+        //     'subtotal' => $subtotal,
+        // ]);
+        return view('user.cart.index');
     }
     public function addToCart(Request $request)
     {

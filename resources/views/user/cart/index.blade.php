@@ -1,102 +1,192 @@
 <x-guest-layout>
 
-
     <!-- Cart Start -->
-    <div class="container-fluid">
-        <div class="row px-xl-5">
-            <div class="col-lg-8 table-responsive mb-5">
-                <table class="table table-light table-borderless table-hover text-center mb-0">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Products</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Remove</th>
-                        </tr>
-                    </thead>
-                    <tbody class="align-middle">
-                        @foreach ($carts as $cart)
-                            <tr>
-                                <td class="align-middle"><img src="{{ $cart->item->photo }}" alt=""
-                                        style="width: 50px;">
-                                    <a href="/products/show/{{ $cart->item_id }}"
-                                        class="text-decoration-none text-secondary">{{ mb_strimwidth($cart->item->name, 0, 30, '...') }}</a>
-                                </td>
-                                <td class="align-middle">Rp{{ number_format($cart->item->price, 2, ',', '.') }}</td>
-                                <td class="align-middle m-auto">
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <form action="/carts/update" method="post">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="item_id" value="{{ $cart->item_id }}">
-                                            <div class="input-group quantity" style="width: 130px;">
-                                                <div class="input-group-btn">
-                                                    <button type="submit" value='-1' name="minus"
-                                                        class="btn btn-warning rounded-0 btn-minus">
-                                                        <i class="fa fa-minus"></i>
-                                                    </button>
-                                                </div>
-                                                <input type="number" name="quantity"
-                                                    class="form-control bg-light border-0 text-center"
-                                                    value="{{ $cart->quantity }}">
-                                                <div class="input-group-btn">
-                                                    <button type="submit" value='1'
-                                                        class="btn btn-warning rounded-0 btn-plus" name="plus">
-                                                        <i class="fa fa-plus"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                </td>
-                                <td class="align-middle">
-                                    Rp{{ number_format($cart->item->price * $cart->quantity, 2, ',', '.') }}</td>
-                                <td class="align-middle"><button class="btn btn-sm btn-danger rounded-0"><i
-                                            class="fa fa-times"></i></button></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+    <div class="container-lg">
+        <div class="row px-xl-5 pt-5">
+
+            <div class="col-lg-9 table-responsive mb-5">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Keranjang</h3>
+                            <p>Tempat duduk<br>Meja nomor 1 (Raid)</p>
+                        </div>
+                        <div class="col position-relative">
+                            <button class="btn btn-secondary position-absolute top-50 end-0">Pilih Meja Lain</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start loop -->
+                <div class="container mb-3">
+                    <hr>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{ url('images/menu/pawon-jinawi/baso.png') }}" alt="" style="width: 100px;">
+                        </div>
+                        <div class="col">
+                            <h5>Bakso</h5>
+                            <h5>10.000</h5>
+                            <input type="text" placeholder="Tulis catatan" style="border:0">
+                        </div>
+
+                    
+
+                        <div class="col-3 position-relative">
+                            <div class="position-absolute top-50 end-0">
+                                <!-- <form action="" method=""> -->
+                                    <input type="hidden" name="id_item" value="id_item">
+                                        <button class="btn btn-danger d-inline">Hapus</button>
+                                        <div class="number-input d-inline">
+                                            <button class="btn btn-secondary" onclick="decrementValue()"><</button>
+                                            <span class="number-display" id="numberDisplay">0</span>
+                                            <button class="btn btn-secondary" onclick="incrementValue()">></button>
+                                        </div>
+                                </form>     
+                            </div>
+                        </div>
+                    
+
+                    </div>
+                </div>
+
+                <div class="container mb-3">
+                    <hr>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{ url('images/menu/pawon-jinawi/baso.png') }}" alt="" style="width: 100px;">
+                        </div>
+                        <div class="col">
+                            <h5>Bakso</h5>
+                            <h5>10.000</h5>
+                            <input type="text" placeholder="Tulis catatan" style="border:0">
+                        </div>
+                        <div class="col-3 position-relative">
+                            <div class="position-absolute top-50 end-0">
+                                <button class="btn btn-danger d-inline">Hapus</button>
+                                <div class="number-input d-inline">
+                                    <button class="btn btn-secondary" onclick="decrementValue()"><</button>
+                                    <span class="number-display" id="numberDisplay">0</span>
+                                    <button class="btn btn-secondary" onclick="incrementValue()">></button>
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mb-3">
+                    <hr>
+                    <div class="row">
+                        <div class="col-2">
+                            <img src="{{ url('images/menu/pawon-jinawi/baso.png') }}" alt="" style="width: 100px;">
+                        </div>
+                        <div class="col">
+                            <h5>Bakso</h5>
+                            <h5>10.000</h5>
+                            <input type="text" placeholder="Tulis catatan" style="border:0">
+                        </div>
+                        <div class="col-3 position-relative">
+                            <div class="position-absolute top-50 end-0">
+                                <button class="btn btn-danger d-inline">Hapus</button>
+                                <div class="number-input d-inline">
+                                    <button class="btn btn-secondary" onclick="decrementValue()"><</button>
+                                    <span class="number-display" id="numberDisplay">0</span>
+                                    <button class="btn btn-secondary" onclick="incrementValue()">></button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <!-- End loop -->
             </div>
-            <div class="col-lg-4">
+
+            <div class="col-lg-3">
                 <form class="mb-5" action="">
                     <div class="input-group">
                         <input type="text" class="form-control border-0 rounded-0" placeholder="Coupon Code">
                         <div class="input-group-append">
-                            <button class="btn btn-warning rounded-0">Apply Coupon</button>
+                            <button class="btn btn-warning">Apply Coupon</button>
                         </div>
                     </div>
                 </form>
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-light pe-3">Cart
-                        Summary</span></h5>
+                <h5 class="section-title position-relative mb-3"><span class="bg-light pe-3">Ringkasan Pesanan</span></h5>
                 <div class="bg-light p-30 mb-5">
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
-                            <h6>Rp{{ number_format($subtotal, 2, ',', '.') }}</h6>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Shipping</h6>
-                            <h6>Rp{{ number_format($subtotal * 0.05, 2, ',', '.') }}</h6>
+                            <h6>Rp 50.000</h6>
                         </div>
                     </div>
                     <div class="pt-2">
                         <div class="d-flex justify-content-between mt-2">
-                            <h5>Total</h5>
-                            <h5>Rp{{ number_format($subtotal + $subtotal * 0.05, 2, ',', '.') }}</h5>
+                            <h5>Total Harga</h5>
+                            <h5>Rp 55.000</h5>
                         </div>
-                        <form action="/carts/checkout" method="post" onsubmit="cartAlert()">
-                            {{ csrf_field() }}
-                            <button class="btn btn-block btn-warning rounded-0 font-weight-bold my-3 py-3">Proceed To
-                                Checkout</button>
-                        </form>
+                            <button class="btn btn-warning px-5" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Beli</button>
+        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
-    </main>
-    </div>
-    </div>
+
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Pembayaran</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-2  ">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Metode Pembayaran</h6>
+                            <a data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Lihat <u>Semua</u></a>
+                        </div>
+                        
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                BRI Virtual Account
+                            </label>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                BNI Virtual Account
+                            </label>
+                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                        </div>
+                        <hr>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Ringkasan Pesanan<br>Total harga</h6>
+                            <h6>Rp 50.000</h6>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <h6>Total Tagihan<br>Rp. 50.000</h6>
+                            <button class="btn btn-warning px-5 font-weight-bold">Beli</button>
+                        </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="modal fade m-2" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Modal 2</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Hide this modal and show the first with the button below.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Lanjut</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
 </x-guest-layout>
