@@ -34,7 +34,11 @@ class RegisteredKedaiController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
+        return $request()->all();
+=======
         // return $request->all();
+>>>>>>> e9684be58c3863f854d7d4c3abddbe9c2e6b6233
         $request->validate([
             'nama_kedai' => ['required', 'string', 'max:255'],
             'nama_pemilik' => ['required', 'string', 'max:255'],
@@ -44,7 +48,11 @@ class RegisteredKedaiController extends Controller
             'telepon' => ['required'],
         ]);
 
+<<<<<<< HEAD
+        $kedai = Kedai::create([
+=======
         Kedai::create([
+>>>>>>> e9684be58c3863f854d7d4c3abddbe9c2e6b6233
             'nama_kedai' => $request->nama_kedai,
             'nama_pemilik' => $request->nama_pemilik,
             'email' => $request->email,

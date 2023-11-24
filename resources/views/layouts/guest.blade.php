@@ -22,9 +22,26 @@
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <link rel="icon" href="{{ url('cuba/assets/images/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('cuba/assets/images/icon-192.png') }}" type="image/x-icon">
+
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/4d516d4246.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.2/dist/css/splide.min.css">
+
+    <style>
+
+        .number-input button {
+            padding: 5px 10px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .number-display {
+            font-size: 18px;
+            margin: 0 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -83,7 +100,7 @@
             <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
                 <span class="fs-3 fw-bold">PesanIn</span>
             </a>
-
+            <!-- Login true -->
             <ul class="nav me-auto">
                 <li class="nav-item me-2">
                     <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
@@ -99,9 +116,16 @@
                 </li>
                 <li class="text-decoration-none">
             </ul>
+            <!-- Login true -->
+
+            <!-- <a class="btn" href="{{ url('admin') }}">
+                        <i data-feather="shopping-cart"></i>
+                        <span>Keranjang</span>
+            </a> -->
             <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                onclick="location.href='{{ route('menus.index') }}'" type="button">
-                <i class="fas"></i> Keranjang </button>
+                onclick="location.href='{{ route('cart') }}'" type="button">
+
+            <!-- Login false -->
             <button class="btn btn-warning text-white me-2 px-5 fw-500"
                 onclick="location.href='{{ route('kedai.login') }}'" type="button">
                 <i class="fas"></i> Masuk </button>
@@ -109,6 +133,7 @@
                 onclick="location.href='{{ route('kedai.register') }}'" type="button"> <i class="fas"></i>
                 Daftar
             </button>
+            <!-- Login false -->
         </div>
         </div>
     </header>
@@ -223,6 +248,25 @@
                 },
             },
         });
+
+        let currentValue = 0;
+        const numberDisplay = document.getElementById('numberDisplay');
+
+        function updateDisplay() {
+            numberDisplay.textContent = currentValue;
+        }
+
+        function incrementValue() {
+            currentValue++;
+            updateDisplay();
+        }
+
+        function decrementValue() {
+            if (currentValue > 0) {
+                currentValue--;
+                updateDisplay();
+            }
+        }
     </script>
 
 </body>

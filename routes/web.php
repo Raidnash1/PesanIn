@@ -9,10 +9,10 @@ use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\WelcomeController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
-use App\Http\Controllers\Frontend\CartController as FrontendCartController;
 
 
 
@@ -21,10 +21,10 @@ Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('c
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
 // Chart
-// Route::get('/cart', [FrontendCartController::class, 'index']);
-// Route::post('/carts/add', [CartController::class, 'addToCart']);
-// Route::post('/carts/update', [CartController::class, 'updateCart']);
-// Route::post('/carts/checkout', [CartController::class, 'checkout']);
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::post('/carts/add', [CartController::class, 'addToCart']);
+Route::post('/carts/update', [CartController::class, 'updateCart']);
+Route::post('/carts/checkout', [CartController::class, 'checkout']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
