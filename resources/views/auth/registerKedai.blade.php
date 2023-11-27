@@ -20,8 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('kedai.register') }}">
                             @csrf
-                            <h4>Login untuk memesan</h4>
-                            <p class="mb-2">Masukkan email & password kamu buat login</p>
+                            <h4>Register PesanIn</h4>
 
                             @if ($errors->any())
                                 <div class="alert alert-danger py-1 mb-1">
@@ -33,39 +32,15 @@
                                 </div>
                             @endif
 
-                            <label class="col-form-label">nama_kedai</label>
+                            <label class="col-form-label">Nama Kedai</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at"
-                                            width="16" height="16" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <circle cx="12" cy="12" r="4"></circle>
-                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-                                        </svg>
-                                    </span>
-                                </div>
                                 <input class="form-control" type="text" id="nama_kedai" name="nama_kedai"
-                                    placeholder="PesanIn" autofocus required>
+                                    Value="RM.Radongan" autofocus required>
                             </div>
-                            <label class="col-form-label">nama_pemilik</label>
+                            <label class="col-form-label">Nama Pemilik</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-at"
-                                            width="16" height="16" viewBox="0 0 24 24" stroke-width="2"
-                                            stroke="currentColor" fill="none" stroke-linecap="round"
-                                            stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <circle cx="12" cy="12" r="4"></circle>
-                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-                                        </svg>
-                                    </span>
-                                </div>
                                 <input class="form-control" type="text" id="nama_pemilik" name="nama_pemilik"
-                                    placeholder="Paijo" autofocus required>
+                                    value="Raid" autofocus required>
                             </div>
                             <label class="col-form-label">Alamat Email</label>
                             <div class="input-group mb-3">
@@ -81,7 +56,7 @@
                                         </svg>
                                     </span>
                                 </div>
-                                <input class="form-control" type="email" name="email" placeholder="contoh@gmail.com"
+                                <input class="form-control" type="email" name="email" value="radongan@gmail.com"
                                     autofocus required>
                             </div>
 
@@ -101,10 +76,10 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="password" name="password" required
-                                    placeholder="*********">
+                                    value="11111111">
                             </div>
 
-                            <label class="col-form-label">Password confirm</label>
+                            <label class="col-form-label">Ulangi Password</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -120,45 +95,21 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="password" name="password_confirmation"
-                                    id="password_confirmation" required placeholder="*********">
+                                    id="password_confirmation" required value="11111111">
                             </div>
                             <label class="col-form-label">Alamat</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-at" width="16" height="16"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <circle cx="12" cy="12" r="4"></circle>
-                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-                                        </svg>
-                                    </span>
-                                </div>
                                 <input class="form-control" type="text" id="alamat" name="alamat"
-                                    placeholder="Jogja" autofocus required>
+                                    value="Maguoharjo" autofocus required>
                             </div>
                             <label class="col-form-label">Telepon</label>
                             <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" id="basic-addon1">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-at" width="16" height="16"
-                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <circle cx="12" cy="12" r="4"></circle>
-                                            <path d="M16 12v1.5a2.5 2.5 0 0 0 5 0v-1.5a9 9 0 1 0 -5.5 8.28"></path>
-                                        </svg>
-                                    </span>
-                                </div>
                                 <input class="form-control" type="text" id="telepon" name="telepon"
-                                    placeholder="085834562384" autofocus required>
+                                    value="085834562384" autofocus required>
                             </div>
                             <div class="form-group mb-0">
 
-                                <button class="btn btn-primary btn-block" type="submit">Masuk Sekarang ⇾ </button>
+                                <button class="btn btn-primary btn-block" type="submit">Lanjutkan ⇾ </button>
 
                             </div><br>
                             <div>Sudah punya akun ? <a href="{{ route('kedai.login') }}">Login</a></div>
