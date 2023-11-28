@@ -18,7 +18,7 @@
             <div class="col-xl-12 p-0">
                 <div class="login-card">
                     <div class="login-main col-5 col-md-5">
-                        <form class="theme-form" method="POST" action="{{ route('login') }}">
+                        <form class="theme-form" method="POST" action="{{ route('pelanggan.login') }}">
                             @csrf
                             <h4>Login untuk masuk pelanggan</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
@@ -77,8 +77,8 @@
                                 </div>
                                 <button class="btn btn-primary btn-block" type="submit">Masuk Sekarang ⇾ </button>
 
-                            </div>
-                            <a class="dropdown-item" href="#">Forgot password?</a>
+                            </div><br>
+                            <div>Belum punya akun ? <a href="register">Registrasi</a></div>
                         </form>
 
                     </div>
