@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_menu');
-            $table->foreignId('id_user');
+            $table->foreignId('id_pelanggan');
             $table->integer('quantity');
             $table->timestamps();
             //constraints
             $table->foreign('id_menu')->references('id')->on('menus');
-            $table->foreign('id_user')->references('id')->on('users');
+            $table->foreign('id_pelanggan')->references('id')->on('pelanggans');
         });
     }
 

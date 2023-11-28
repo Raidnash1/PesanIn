@@ -31,7 +31,7 @@ class CartController extends Controller
     public function addToCart(Request $request)
     {
         $itemExist = DB::table('carts')
-            ->where('id_user', Auth::user()->id)
+            ->where('id_pelanggan', Auth::pelanggan()->id)
             ->where('id_menu', $request->id_menu)
             ->get();
         // var_dump(sizeof($itemExist));
@@ -45,7 +45,7 @@ class CartController extends Controller
         }
         DB::table('carts')->insert([
             'id' => $request->id,
-            'id_user' => $request->id_user,
+            'id_pelanggan' => $request->id_pelanggan,
             'id_menu' => $request->id_menu,
             'quantity' => $request->quantity,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

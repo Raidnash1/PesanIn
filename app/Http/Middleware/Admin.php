@@ -18,10 +18,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check() || !auth()->user()->role) {
-            abort(403);
-        }
-        return $next($request);
+        // if (!auth()->check() || !auth()->user()->role) {
+        //     abort(403);
+        // }
+        // return $next($request);
         // // Ambil ID Kedai yang sudah login
         // $loggedInKedaiId = Auth::guard('kedai')->id();
 
@@ -35,4 +35,12 @@ class Admin
 
         // return $next($request);
     }
+    // public function handle(Request $request, Closure $next, ...$roles)
+    // {
+    //     if (!$request->user() || !in_array($request->user()->role, $roles)) {
+    //         abort(403, 'Unauthorized.');
+    //     }
+
+    //     return $next($request);
+    // }
 }

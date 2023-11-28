@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('pelanggans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_kedais');
+            $table->foreignId('user_id');
             $table->string('nama');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->timestamps();
             //Contrain
-            $table->foreign('id_kedais')->references('id')->on('kedais');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

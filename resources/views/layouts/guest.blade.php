@@ -30,7 +30,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.2/dist/css/splide.min.css">
 
     <style>
-
         .number-input button {
             padding: 5px 10px;
             font-size: 14px;
@@ -122,18 +121,18 @@
                         <i data-feather="shopping-cart"></i>
                         <span>Keranjang</span>
             </a> -->
-            <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                onclick="location.href='{{ route('cart') }}'" type="button">
+            <button class="btn btn-warning text-white me-2 px-5 fw-500" onclick="location.href='{{ route('cart') }}'"
+                type="button">
 
-            <!-- Login false -->
-            <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                onclick="location.href='{{ route('kedai.login') }}'" type="button">
-                <i class="fas"></i> Masuk </button>
-            <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
-                onclick="location.href='{{ route('kedai.register') }}'" type="button"> <i class="fas"></i>
-                Daftar
-            </button>
-            <!-- Login false -->
+                <!-- Login false -->
+                <button class="btn btn-warning text-white me-2 px-5 fw-500"
+                    onclick="location.href='{{ route('login') }}'" type="button">
+                    <i class="fas"></i> Masuk </button>
+                <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
+                    onclick="location.href='{{ route('register') }}'" type="button"> <i class="fas"></i>
+                    Daftar
+                </button>
+                <!-- Login false -->
         </div>
         </div>
     </header>

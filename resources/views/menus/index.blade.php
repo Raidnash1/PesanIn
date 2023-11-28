@@ -1,5 +1,5 @@
 <x-guest-layout>
-<!-------------------------- Menu Hero Section -------------------------->
+    <!-------------------------- Menu Hero Section -------------------------->
     <section>
         <div class="container">
             <div class="mt-4 mt-md-0 mb-3 bg-warning text-white rounded-3">
@@ -177,27 +177,36 @@
                         <!-- START LOOP -->
                         <div class="col-md-3 float-left">
                             <form action="">
-                                <div class="card card-borderless-shadow card-min-height">
-                                    <img src="{{ url('images/menu/pawon-jinawi/baso.png') }}"
-                                        class="card-img-top" />
-                                    <div class="card-body">
-                                        <table class="table">
-                                            <tr>
-                                                <td>
-                                                    <h5 class="card-title">Baso</h5>
-                                                    <h5 class="card-title fw-bold">Rp.10.0000</h5>
-                                                </td>
-                                                <td class="position-relative">
-                                                    <input class="position-absolute" type="hidden" name="id_menu" value="1">
-                                                    <input class="btn btn-warning position-absolute end-0" type="submit" value="+">
-                                                </td>
-                                        </table>
-                                    </div>
-                                </div>
+                                @foreach ($menus as $menu)
+                                    <a class="col text-start btn" href="{{ route('menus.show', $menu) }}">
+                                        <div class="card card-borderless-shadow card-min-height">
+                                            <img src="{{ Storage::url($menu->image) }}" class="card-img-top" />
+                                            <div class="card-body">
+                                                <table class="table">
+                                                    <tr>
+                                                        <td>
+                                                            <h5 class="card-title">{{ $menu->name }}</h5>
+                                                            <h5 class="card-title fw-bold">
+                                                                Rp.{{ $menu->price }}.000,00
+                                                            </h5>
+                                                        </td>
+                                                        <td class="position-relative">
+                                                            <input class="position-absolute" type="hidden"
+                                                                name="id_menu" value="1">
+                                                            <button type="button" value="{{ $menu->id }}"
+                                                                class="btn text-white bg-warning me-2 addCart"
+                                                                style="font-size: 18px">+</button>
+                                                            {{-- <input class="btn btn-warning position-absolute end-0"
+                                                            type="submit" value="id">+</input> --}}
+                                                        </td>
+                                                </table>
+                                            </div>
+                                        </div>
+                                @endforeach
                             </form>
                         </div>
                         <!-- END LOOP -->
-                        
+
                     </div>
                 </div>
             </div>

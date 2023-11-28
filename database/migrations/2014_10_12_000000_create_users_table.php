@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Pelanggan;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('role')->default(false);
+            $table->string('role')->default('pelanggan');
             $table->rememberToken();
             $table->timestamps();
         });

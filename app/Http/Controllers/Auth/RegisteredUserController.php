@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'email_verified_at' => now(),
             'remember_token' => Str::random(10),
-            'role' => 1
+            'role' => $request->role
 
         ]);
         // return redirect('/login');

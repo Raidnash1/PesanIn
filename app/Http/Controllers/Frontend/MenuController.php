@@ -10,8 +10,13 @@ class MenuController extends Controller
 {
     public function index()
     {
-        $menus = Menu::all();
 
+        $menus = auth()->user()->menus;
         return view('menus.index', compact('menus'));
+    }
+    public function show(Menu $id)
+    {
+        $menus = Menu::find($id);
+        return view('menus.detail', compact('menus'));
     }
 }

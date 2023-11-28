@@ -10,7 +10,6 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
 
@@ -21,6 +20,7 @@ Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('c
 Route::get('/categories/{category}', [FrontendCategoryController::class, 'show'])->name('categories.show');
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
 // Chart
+Route::get('/menus/{id}', [FrontendMenuController::class, 'show'])->name('menus.show');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::post('/carts/add', [CartController::class, 'addToCart']);
 Route::post('/carts/update', [CartController::class, 'updateCart']);
@@ -54,12 +54,13 @@ Route::post('/carts/checkout', [CartController::class, 'checkout']);
 //     }
 // });
 
-Route::middleware(['auth', 'admin'])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'check.role'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/menus', MenuController::class);
     Route::resource('/tables', TableController::class);
 });
+
 // Route::middleware(['auth:kedai', 'kedai.admin'])->name('admin.')->prefix('admin')->group(function () {
 //     Route::get('/', [AdminController::class, 'index'])->name('index');
 //     Route::resource('/categories', CategoryController::class);

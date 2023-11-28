@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'admin' => Admin::class,
         'add.username' => \App\Http\Middleware\AddUsernameToPrefix::class,
         // 'kedai.admin' => Admin::class
+        'check.role' => \App\Http\Middleware\CheckRole::class,
     ];
 }
