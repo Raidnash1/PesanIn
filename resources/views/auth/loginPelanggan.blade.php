@@ -20,7 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('pelanggan.login') }}">
                             @csrf
-                            <h4>Login untuk masuk pelanggan</h4>
+                            <h4>Login Pelanggan</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())

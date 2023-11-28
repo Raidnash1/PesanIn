@@ -20,7 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('login') }}">
                             @csrf
-                            <h4>Login untuk masuk dashboard</h4>
+                            <h4>Login PesanIn</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())
@@ -71,7 +71,10 @@
                             </div>
 
                             <div class="form-group mb-0">
-
+                                <div class="checkbox p-0">
+                                    <input id="checkbox1" type="checkbox" name="remember">
+                                    <label class="text-muted" for="checkbox1">Ingat Password</label>
+                                </div>
                                 <button class="btn btn-primary btn-block" type="submit">Masuk Sekarang ⇾ </button>
 
                             </div><br>

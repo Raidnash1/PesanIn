@@ -26,7 +26,7 @@
                     <a class="nav-link" style="background-color: #ffefbe" href="{{ '/admin/reservations/create' }}">
                         <i data-feather="plus-square"></i>
                         <span class="d-none d-sm-none d-md-inline-block">
-                            Tambah Tranzakziz
+                            Tambah Transaksi
                         </span>
                     </a>
                 </li>

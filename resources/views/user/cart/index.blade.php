@@ -1,5 +1,10 @@
 <x-guest-layout>
-
+@push('datatable-styles')
+        <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/scrollable.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatables.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatable-extension.css') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.3.1/dist/css/splide.min.css">
+    @endpush
     <!-- Cart Start -->
     <div class="container-lg">
         <div class="row px-xl-5 pt-5">
