@@ -32,9 +32,11 @@ class RegisteredKedaiController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+
     public function store(Request $request)
     {
         // return $request->all();
+
         $request->validate([
             'nama_kedai' => ['required', 'string', 'max:255'],
             'nama_pemilik' => ['required', 'string', 'max:255'],

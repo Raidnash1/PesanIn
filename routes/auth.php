@@ -45,7 +45,6 @@ Route::group(['prefix' => 'kedai'], function () {
 
     Route::post('register', [RegisteredKedaiController::class, 'store'])->name('kedai.register');
 
-
     Route::get('login', [KedaiAuthController::class, 'create'])
         ->name('store')->name('kedai.login');
 
