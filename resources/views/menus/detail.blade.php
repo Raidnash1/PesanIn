@@ -18,7 +18,7 @@
                         </div>
 
                     </div>
-                    <form class="col d-flex flex-column ms-3" action="" method="POST">
+                    <form class="col d-flex flex-column ms-3" action="{{ route('cart.addToCart') }}" method="POST">
                         @csrf
                         <h2 style="; font-weight: 600">{{ $menu->name }}</h2>
                         <div class="d-flex flex-row justify-content-between w-100 mt-2 ">
@@ -41,14 +41,15 @@
                         </div>
 
                         <div class="d-flex flex-row align-items-center w-100 ms-0">
-                            <form action="{{ url('/cart/add/' . $menu->id) }}" method="post">
-                                @csrf
-                                <button type="button" value="{{ $menu->id }}"
-                                    class="btn text-white bg-secondary me-2 addCart"
-                                    style="font-size: 18px">Keranjang</button>
-                            </form>
-                            <button type="submit" class="btn text-white bg-warning" name="id"
-                                value="{{ $menu->id }}" style="font-size: 18px">Bayar</button>
+                            @if (Auth::guard('pelanggan')->check())
+                                <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
+                                <input type="hidden" name="id_menu" value="{{ $menu->id }}">
+                                <button type="submit" class="btn text-white bg-secondary me-2 addCart"
+                                    style="font-size: 18px">Tambahkan ke Keranjang</button>
+                            @else
+                                <a href="{{ route('pelanggan.login') }}" class="btn text-white bg-secondary me-2"
+                                    style="font-size: 18px">Login untuk Tambahkan ke Keranjang</a>
+                            @endif
                         </div>
 
                         <div class="mt-4">

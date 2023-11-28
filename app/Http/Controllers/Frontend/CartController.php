@@ -30,29 +30,57 @@ class CartController extends Controller
     }
     public function addToCart(Request $request)
     {
-        $itemExist = DB::table('carts')
-            ->where('id_pelanggan', Auth::pelanggan()->id)
-            ->where('id_menu', $request->id_menu)
-            ->get();
-        // var_dump(sizeof($itemExist));
-        // exit;
-        if (sizeof($itemExist)) {
-            $count = $itemExist[0]->quantity + (int)$request->quantity;
-            DB::table('carts')->where('id', $itemExist[0]->id)->update([
-                'quantity' => $count,
-            ]);
-            return redirect("/products/show/$request->item_id");
-        }
-        DB::table('carts')->insert([
-            'id' => $request->id,
-            'id_pelanggan' => $request->id_pelanggan,
-            'id_menu' => $request->id_menu,
-            'quantity' => $request->quantity,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
-        ]);
+        // $itemExist = DB::table('carts')
+        //     ->where('id_pelanggan', Auth::pelanggan()->id)
+        //     ->where('id_menu', $request->id_menu)
+        //     ->get();
+        // // var_dump(sizeof($itemExist));
+        // // exit;
+        // if (sizeof($itemExist)) {
+        //     $count = $itemExist[0]->quantity + (int)$request->quantity;
+        //     DB::table('carts')->where('id', $itemExist[0]->id)->update([
+        //         'quantity' => $count,
+        //     ]);
+        //     return redirect("/products/show/$request->item_id");
+        // }
+        // DB::table('carts')->insert([
+        //     'id' => $request->id,
+        //     'id_pelanggan' => $request->id_pelanggan,
+        //     'id_menu' => $request->id_menu,
+        //     'quantity' => $request->quantity,
+        //     'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        //     'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        // ]);
 
-        return redirect("/products/show/$request->id_menu");
+        // return redirect("/products/show/$request->id_menu");
+        // Periksa apakah pengguna sudah login
+        if (Auth::guard('pelanggan')->check()) {
+            $itemExist = DB::table('carts')
+                ->where('id_pelanggan', Auth::guard('pelanggan')->id())
+                ->where('id_menu', $request->id_menu)
+                ->get();
+
+            if (sizeof($itemExist)) {
+                $count = $itemExist[0]->quantity + (int)$request->quantity;
+                DB::table('carts')->where('id', $itemExist[0]->id)->update([
+                    'quantity' => $count,
+                ]);
+                return redirect("/products/show/$request->item_id");
+            }
+
+            DB::table('carts')->insert([
+                'id_pelanggan' => Auth::guard('pelanggan')->id(),
+                'id_menu' => $request->id_menu,
+                'quantity' => $request->quantity,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            return redirect("/products/show/$request->id_menu");
+        } else {
+            // Pengguna belum login, arahkan ke halaman login
+            return redirect()->route('login')->with('error', 'Anda harus login untuk menambahkan ke keranjang.');
+        }
     }
     public function updateCart(Request $request)
     {

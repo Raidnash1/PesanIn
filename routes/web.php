@@ -20,7 +20,7 @@ Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.inde
 // Chart
 Route::get('/menus/{id}', [FrontendMenuController::class, 'show'])->name('menus.show');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::post('/carts/add', [CartController::class, 'addToCart']);
+Route::post('/carts/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/carts/update', [CartController::class, 'updateCart']);
 Route::post('/carts/checkout', [CartController::class, 'checkout']);
 
