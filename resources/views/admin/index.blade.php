@@ -1,6 +1,6 @@
 @extends('layouts.backend.master')
 
-@section('title', 'Admin Dashboard — Restawrant')
+@section('title', 'Admin Dashboard')
 @section('content')
 
     @push('datatable-styles')
@@ -49,8 +49,8 @@
                             </h4>
                             <p>
                                 <span>
-                                    Selamat datang di halaman administrator Restawrant, disini anda dapat menambah menu,
-                                    kategori, meja dan menambah reservasi.
+                                    Selamat datang di halaman administrator Pawon Jinawi, disini anda dapat menambah menu,
+                                    kategori, meja dan mengelola pesanan.
                                 </span>
                             </p>
                             <div class="whatsnew-btn">
@@ -205,7 +205,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>📅 • Daftar tranzakz</span>
+                        <h5>📅 • Daftar transaksi</span>
                     </div>
                     <div class="card-body">
                         <div class="dt-ext table-responsive">
