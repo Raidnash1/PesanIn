@@ -19,7 +19,7 @@ Route::get('/categories/{category}', [FrontendCategoryController::class, 'show']
 Route::get('/menus', [FrontendMenuController::class, 'index'])->name('menus.index');
 // Chart
 Route::get('/menus/{id}', [FrontendMenuController::class, 'show'])->name('menus.show');
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/{id}', [CartController::class, 'index'])->name('cart');
 Route::post('/carts/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/carts/update', [CartController::class, 'updateCart']);
 Route::post('/carts/checkout', [CartController::class, 'checkout']);
@@ -28,31 +28,17 @@ Route::post('/carts/checkout', [CartController::class, 'checkout']);
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-// Route::middleware(['auth', 'admin'])->group(function () {
-//     $username = auth()->user()->nama_user;
-
-//     // Validasi bahwa ada nama pengguna sebelum membuat grup rute
-//     if ($username) {
-//         Route::name('admin.')->prefix($username . '/admin')->group(function () {
-//             Route::get('/', [AdminController::class, 'index'])->name('index');
-//             Route::resource('/categories', CategoryController::class);
-//             Route::resource('/menus', MenuController::class);
-//             Route::resource('/tables', TableController::class);
-//             Route::resource('/reservations', ReservationController::class);
-//         });
-//     } else {
-//         // Tindakan jika nama pengguna tidak tersedia, mungkin redirect atau tampilkan pesan kesalahan.
-//         Route::name('admin.')->prefix($username . '/admin')->group(function () {
-//             Route::get('/', [AdminController::class, 'index'])->name('index');
-//             Route::resource('/categories', CategoryController::class);
-//             Route::resource('/menus', MenuController::class);
-//             Route::resource('/tables', TableController::class);
-//             Route::resource('/reservations', ReservationController::class);
-//         });
-//     }
+// Route::middleware(['check.role', 'auth', 'admin'])->group(function () {
+//     Route::prefix('{username}/admin')->name('admin.')->group(function () {
+//         Route::get('/', [AdminController::class, 'index'])->name('index');
+//         Route::resource('/categories', CategoryController::class);
+//         Route::resource('/menus', MenuController::class);
+//         Route::resource('/tables', TableController::class);
+//         Route::resource('/reservations', ReservationController::class);
+//     });
 // });
 
-Route::middleware(['auth', 'check.role'])->name('admin.')->prefix('admin')->group(function () {
+Route::middleware(['auth', 'check.role:1'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/menus', MenuController::class);

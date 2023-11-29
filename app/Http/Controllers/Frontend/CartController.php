@@ -13,20 +13,20 @@ class CartController extends Controller
 {
     public function index()
     {
-        // $carts = Cart::with(['Menu', 'User'])->where('id_user', Auth::user()->id)
-        //     ->get();
-        // $carts = DB::table('carts')
-        //     ->where('id_user', Auth::user()->id)
-        //     ->get();
-        // $subtotal = 0;
-        // foreach ($carts as $cart) {
-        //     $subtotal += $cart->menu->price * $cart->quantity;
-        // }
-        // return view('user.cart.index', [
-        //     'carts' => $carts,
-        //     'subtotal' => $subtotal,
-        // ]);
-        return view('user.cart.index');
+        $carts = Cart::with(['Menu', 'Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
+            ->get();
+        $subtotal = 0;
+        foreach ($carts as $cart) {
+            $subtotal += $cart->price * $cart->quantity;
+        }
+        $totalHarga = $carts->sum(function ($cart) {
+            return $cart->menu->price * $cart->quantity;
+        });
+        return view('user.cart.index', [
+            'carts' => $carts,
+            'subtotal' => $subtotal,
+            'totalHarga' => $totalHarga,
+        ]);
     }
     public function addToCart(Request $request)
     {
@@ -65,7 +65,7 @@ class CartController extends Controller
                 DB::table('carts')->where('id', $itemExist[0]->id)->update([
                     'quantity' => $count,
                 ]);
-                return redirect("/products/show/$request->item_id");
+                return redirect("cart/$request->id_menu");
             }
 
             DB::table('carts')->insert([
@@ -76,7 +76,7 @@ class CartController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect("/products/show/$request->id_menu");
+            return redirect("cart/$request->id_menu");
         } else {
             // Pengguna belum login, arahkan ke halaman login
             return redirect()->route('login')->with('error', 'Anda harus login untuk menambahkan ke keranjang.');

@@ -121,8 +121,8 @@
                         <i data-feather="shopping-cart"></i>
                         <span>Keranjang</span>
             </a> -->
-            <button class="btn btn-warning text-white me-2 px-5 fw-500" onclick="location.href='{{ route('cart') }}'"
-                type="button">
+            <button class="btn btn-warning text-white me-2 px-5 fw-500"
+                onclick="location.href='{{ Auth::guard('pelanggan')->id() }}'" type="button">
 
                 <!-- Login false -->
                 <button class="btn btn-warning text-white me-2 px-5 fw-500"

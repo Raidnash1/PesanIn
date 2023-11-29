@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $role)
     {
-        if (Auth::user()->role == 1) {
+        if (Auth::check() && Auth::user()->role == $role) {
             return $next($request);
         }
         abort(403);

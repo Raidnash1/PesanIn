@@ -50,17 +50,18 @@ Route::group(['prefix' => 'kedai'], function () {
 
     Route::post('login', [KedaiAuthController::class, 'store'])->name('kedai.login');
 });
-Route::group(['prefix' => 'pelanggan'], function () {
-    Route::get('register', [RegisteredPelangganController::class, 'create'])
-        ->name('pelanggan.register');
 
-    Route::post('register', [RegisteredPelangganController::class, 'store'])->name('pelanggan.register');
+//pelanggan login
+Route::get('pelanggan/register', [RegisteredPelangganController::class, 'create'])
+    ->name('pelanggan.register');
+
+Route::post('pelanggan/register', [RegisteredPelangganController::class, 'store'])->name('pelanggan.register');
 
 
-    Route::get('login', [PelangganAuthController::class, 'create'])->name('pelanggan.login');
+Route::get('pelanggan/login', [PelangganAuthController::class, 'create'])->name('pelanggan.login');
 
-    Route::post('login', [PelangganAuthController::class, 'store']);
-})->name('pelanggan.login');
+Route::post('pelanggan/login', [PelangganAuthController::class, 'store'])->name('pelanggan.login');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])

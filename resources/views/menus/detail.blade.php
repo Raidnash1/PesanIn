@@ -31,11 +31,11 @@
 
                             <div class="d-flex flex-row align-items-center">
                                 <div class="btn minus bg-light text-center align-self-center"
-                                    style="font-size: 18px; width:35px">-</div>
+                                    style="font-size: 18px; width:35px" onclick="decrementQty()">-</div>
                                 <input class="num text-center border-0 mx-2" style="font-size: 18px; width: 25px"
-                                    name="qty" value="1">
+                                    name="quantity" id="qtyInput" value="1">
                                 <div class="btn plus bg-light text-center align-self-center"
-                                    style="font-size: 18px; width:35px">+</div>
+                                    style="font-size: 18px; width:35px" onclick="incrementQty()">+</div>
                             </div>
 
                         </div>
@@ -65,20 +65,17 @@
         </div>
         </div>
         <script>
-            // Script untuk menambah dan mengurangi nilai pada input
-            document.querySelector('.minus').addEventListener('click', function() {
-                var value = parseInt(document.querySelector('.num').value, 10);
-                value = isNaN(value) ? 0 : value;
-                value--;
-                document.querySelector('.num').value = value < 1 ? 1 : value;
-            });
+            function incrementQty() {
+                var qtyInput = document.getElementById('qtyInput');
+                qtyInput.value = parseInt(qtyInput.value) + 1;
+            }
 
-            document.querySelector('.plus').addEventListener('click', function() {
-                var value = parseInt(document.querySelector('.num').value, 10);
-                value = isNaN(value) ? 0 : value;
-                value++;
-                document.querySelector('.num').value = value;
-            });
+            function decrementQty() {
+                var qtyInput = document.getElementById('qtyInput');
+                if (parseInt(qtyInput.value) > 1) {
+                    qtyInput.value = parseInt(qtyInput.value) - 1;
+                }
+            }
         </script>
     </section>
 </x-guest-layout>

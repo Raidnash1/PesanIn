@@ -20,7 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('pelanggan.register') }}">
                             @csrf
-                            <h4>Registrasi untuk masuk dashboard</h4>
+                            <h4>Registrasi untuk memesan</h4>
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())
@@ -111,7 +111,7 @@
                                 <button class="btn btn-primary btn-block" type="submit">Masuk Sekarang ⇾ </button>
 
                             </div><br>
-                            <div>Sudah punya akun ? <a href="/login">Login</a></div>
+                            <div>Sudah punya akun ? <a href="login">Login</a></div>
                         </form>
 
                     </div>

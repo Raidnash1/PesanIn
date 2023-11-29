@@ -24,7 +24,7 @@ class Menu extends Model
     {
         return $this->hasMany(Order::class);
     }
-    public function Cart()
+    public function carts()
     {
         return $this->hasMany(Cart::class);
     }
