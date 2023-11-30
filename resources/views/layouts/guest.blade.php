@@ -100,45 +100,35 @@
             </a>
 
             @auth
-            <ul class="nav me-auto">
-                <li class="nav-item me-2">
-                    <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
-                </li>
-                <li class="nav-item me-2">
-                    <a href="/" class="nav-link link-dark text-grey px-2">Dashboard</a>
-                </li>
-                <li class="nav-item me-2">
-                    <a href="{{ route('menus.index') }}" class="nav-link link-dark text-grey px-2">Menu</a>
-                </li>
-                <li class="nav-item me-2">
-                    <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
-                </li>
-                <li class="text-decoration-none">
-            </ul>
+                <ul class="nav me-auto">
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2">Dashboard</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="{{ route('menus.index') }}" class="nav-link link-dark text-grey px-2">Menu</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
+                    </li>
+                    <li class="text-decoration-none">
+                </ul>
 
-<<<<<<< HEAD
-            <!-- <a class="btn" href="{{ url('admin') }}">
-                        <i data-feather="shopping-cart"></i>
-                        <span>Keranjang</span>
-            </a> -->
-            <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                onclick="location.href='{{ Auth::guard('pelanggan')->id() }}'" type="button">
-
-                <!-- Login false -->
-=======
-            <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
-                <a class="nav-link link-dark text-grey px-2 me-2" href="{{ route('cart') }}">Keranjang</a>
-            </span>
-            <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark">
-                <a class="text-decoration-none" href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                </form>
-            </span>
+                <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
+                    <a class="nav-link link-dark text-grey px-2 me-2" href="{{ route('cart') }}">Keranjang</a>
+                </span>
+                <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark">
+                    <a class="text-decoration-none" href="{{ route('logout') }}"
+                        onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </span>
             @endauth
-            
+
             @guest
->>>>>>> f51bb7acb9238c04089753ced17aa21ed6db95b6
                 <button class="btn btn-warning text-white me-2 px-5 fw-500"
                     onclick="location.href='{{ route('login') }}'" type="button">
                     <i class="fas"></i> Masuk </button>

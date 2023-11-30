@@ -20,11 +20,7 @@
                     <div class="login-main col-5 col-md-5">
                         <form class="theme-form" method="POST" action="{{ route('pelanggan.register') }}">
                             @csrf
-<<<<<<< HEAD
-                            <h4>Registrasi untuk memesan</h4>
-=======
                             <h4>Registrasi Pelanggan</h4>
->>>>>>> f51bb7acb9238c04089753ced17aa21ed6db95b6
                             <p class="mb-2">Masukkan email & password kamu buat login</p>
 
                             @if ($errors->any())
