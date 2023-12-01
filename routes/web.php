@@ -22,7 +22,8 @@ Route::get('/menus/{id}', [FrontendMenuController::class, 'show'])->name('menus.
 Route::get('/cart/{id}', [CartController::class, 'index'])->name('cart');
 Route::post('/carts/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/carts/update', [CartController::class, 'updateCart']);
-Route::post('/carts/checkout', [CartController::class, 'checkout']);
+Route::post('/carts/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
+Route::get('/orders', [OrderController::class, 'userShow']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -59,7 +60,7 @@ Route::middleware(['auth', 'check.role:1'])->name('admin.')->prefix('admin')->gr
 // Route::get('/setting', [UserController::class, 'userSetting']);
 // Route::post('/update', [UserController::class, 'userUpdate']);
 
-// Route::get('/orders', [OrderController::class, 'userShow']);
+
 
 
 

@@ -1,6 +1,8 @@
 <h4>Orders</h4>
 <div class="table-responsive">
-  <table class="table table-striped table-sm">
+    <button id="pay-button" class="btn btn-warning px-5 mt-3" data-bs-target="#exampleModalToggle"
+        data-bs-toggle="modal">Beli</button>
+    {{-- <table class="table table-striped table-sm">
     <thead class="">
       <tr>
         <th scope="col">Item</th>
@@ -39,5 +41,35 @@
       <div class="card-footer">
         {{ $orders->links() }}
       </div>
-    @endif
+    @endif --}}
 </div>
+<script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function() {
+        // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+        // Also, use the embedId that you defined in the div above, here.
+        window.snap.embed('{{ $snapToken }}', {
+            embedId: 'snap-container',
+            onSuccess: function(result) {
+                /* You may add your own implementation here */
+                alert("payment success!");
+                console.log(result);
+            },
+            onPending: function(result) {
+                /* You may add your own implementation here */
+                alert("wating your payment!");
+                console.log(result);
+            },
+            onError: function(result) {
+                /* You may add your own implementation here */
+                alert("payment failed!");
+                console.log(result);
+            },
+            onClose: function() {
+                /* You may add your own implementation here */
+                alert('you closed the popup without finishing the payment');
+            }
+        });
+    });
+</script>

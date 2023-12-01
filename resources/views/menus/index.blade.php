@@ -6,7 +6,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-8 p-5 my-auto align-center text-black">
-                            <h1 class="display-5 fw-bold">Katalog Menu Makanan & Minuman Restawrant</h1>
+                            <h1 class="display-5 fw-bold">Katalog Menu Makanan & Minuman PesanIn</h1>
                             <p class="col-md-10">
                                 Disini kalian bisa nemuin semua menu dengan berbagai macam kategori yang dapat kalian
                                 pesan

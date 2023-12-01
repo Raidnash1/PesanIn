@@ -81,18 +81,19 @@ class CartController extends Controller
 
     public function checkout()
     {
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
         $carts = Cart::with(['Menu', 'Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
             ->get();
-        $order = Order::with(['Menu', 'Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
-            ->get();
-        $pelanggan = Order::with(['Pelanggan'])->where('id_pelanggan', Auth::guard('pelanggan')->id())
-            ->get();
 
+        $pelanggan = Pelanggan::find(Auth::guard('pelanggan')->id());
         $totalHarga = $carts->sum(function ($cart) {
             return $cart->menu->price * $cart->quantity;
         });
+
+        $orderIds = []; // Menyimpan ID order yang baru saja dibuat
+
         foreach ($carts as $menu) {
-            DB::table('orders')->insert([
+            $order = Order::create([
                 'id_menu' => $menu->id_menu,
                 'id_pelanggan' => $menu->id_pelanggan,
                 'quantity' => $menu->quantity,
@@ -102,32 +103,38 @@ class CartController extends Controller
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
 
+            // Simpan ID order ke dalam array
+            $orderIds[] = $order->id;
+
             DB::table('carts')->where('id', $menu->id)->delete();
+
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = config('midtrans.server_key');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+
+            // Gunakan ID order terakhir dalam array sebagai referensi
+            $latestOrderId = end($orderIds);
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => $latestOrderId,
+                    'gross_amount' => $totalHarga,
+                ),
+                'customer_details' => array(
+                    'first_name' => $pelanggan->nama,
+                    'email' => $pelanggan->email,
+                ),
+            );
+
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            dd($snapToken);
+
+            // return view('user.orders.index', compact('snapToken', 'params', 'carts'));
         }
-        // Set your Merchant Server Key
-        \Midtrans\Config::$serverKey = config('midtrans.server_key');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
-        \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        \Midtrans\Config::$is3ds = true;
-
-        $params = array(
-            'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->total_harga,
-            ),
-            'customer_details' => array(
-                'first_name' => $pelanggan->nama,
-                'email' => $pelanggan->email,
-            ),
-        );
-
-        $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('user.cart.index', [
-            'order' => $order,
-            'snapToken' => $snapToken,
-        ]);
     }
 }

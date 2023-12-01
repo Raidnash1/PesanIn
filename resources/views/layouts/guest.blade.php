@@ -255,55 +255,52 @@
         });
 
         let currentValue = 0;
-        const numberDisplay = document.getElementById('numberDisplay');
+        const numberDisplay = document.getElementById('numberDisplay'); <
+        script >
+            function decrementValue() {
+                // Mendapatkan elemen span yang menampilkan quantity
+                var displayElement = document.getElementById('numberDisplay');
 
-        function updateDisplay() {
-            numberDisplay.textContent = currentValue;
-        }
+                // Mendapatkan nilai quantity saat ini
+                var currentValue = parseInt(displayElement.innerHTML);
+
+                // Mengurangkan nilai quantity jika tidak kurang dari 0
+                if (currentValue > 0) {
+                    currentValue -= 1;
+                    displayElement.innerHTML = currentValue;
+                }
+            }
 
         function incrementValue() {
-            currentValue++;
-            updateDisplay();
-        }
+            // Mendapatkan elemen span yang menampilkan quantity
+            var displayElement = document.getElementById('numberDisplay');
 
-        function decrementValue() {
-            if (currentValue > 0) {
-                currentValue--;
-                updateDisplay();
-            }
+            // Mendapatkan nilai quantity saat ini
+            var currentValue = parseInt(displayElement.innerHTML);
+
+            // Menambahkan nilai quantity
+            currentValue += 1;
+            displayElement.innerHTML = currentValue;
         }
     </script>
+    function updateDisplay() {
+    numberDisplay.textContent = currentValue;
+    }
 
-    <script type="text/javascript">
-        // For example trigger on button clicked, or any time you need
-        var payButton = document.getElementById('pay-button');
-        payButton.addEventListener('click', function() {
-            // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
-            // Also, use the embedId that you defined in the div above, here.
-            window.snap.embed({
-                embedId: 'snap-container',
-                onSuccess: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment success!");
-                    console.log(result);
-                },
-                onPending: function(result) {
-                    /* You may add your own implementation here */
-                    alert("wating your payment!");
-                    console.log(result);
-                },
-                onError: function(result) {
-                    /* You may add your own implementation here */
-                    alert("payment failed!");
-                    console.log(result);
-                },
-                onClose: function() {
-                    /* You may add your own implementation here */
-                    alert('you closed the popup without finishing the payment');
-                }
-            });
-        });
+    function incrementValue() {
+    currentValue++;
+    updateDisplay();
+    }
+
+    function decrementValue() {
+    if (currentValue > 0) {
+    currentValue--;
+    updateDisplay();
+    }
+    }
     </script>
+
+
 
 </body>
 
