@@ -55,7 +55,7 @@
                                                                                                                                         width: 40px;
                                                                                                                                         height: 40px;"
                                                                 class="b-r-8"
-                                                                src="{{ Storage::url($item->image) }}?colors=FAD089,FF9C5B,F5634A,ED303C,3B8183">
+                                                                src="{{ url($item->image) }}?colors=FAD089,FF9C5B,F5634A,ED303C,3B8183">
                                                         </div>
                                                     </div>
                                                     <div class="flex-fill">

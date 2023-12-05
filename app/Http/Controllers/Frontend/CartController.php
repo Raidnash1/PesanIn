@@ -24,12 +24,14 @@ class CartController extends Controller
         $totalHarga = $carts->sum(function ($cart) {
             return $cart->menu->price * $cart->quantity;
         });
+        
         return view('user.cart.index', [
             'carts' => $carts,
             'subtotal' => $subtotal,
             'totalHarga' => $totalHarga,
         ]);
     }
+    
     public function addToCart(Request $request)
     {
         if (Auth::guard('pelanggan')->check()) {
@@ -60,6 +62,7 @@ class CartController extends Controller
             return redirect()->route('login')->with('error', 'Anda harus login untuk menambahkan ke keranjang.');
         }
     }
+
     public function updateCart(Request $request)
     {
         $menu = DB::table('carts')

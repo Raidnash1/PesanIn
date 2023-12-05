@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Support\Facades\{Auth, Storage, Validator};
-use App\Models\{Menu, Order, Status, Role, Transaction, User};
+use App\Models\{Menu, Order, Status, Role, Transaction, User, Pelanggan};
 
 class OrderController extends Controller
 {
@@ -16,8 +17,16 @@ class OrderController extends Controller
         $data['orders'] = $orderModel->findAll();
 
         // Tampilkan view index_order dengan data pesanan
-        return view('user/orders/index', $data);
+        return view('user.orders.index', $data);
     }
+    public function invoice($id)
+    {
+        // Ambil data pesanan dari database
+        $order = Order::find($id);
+        $pelanggan = Pelanggan::find(Auth::guard('pelanggan')->id());
+        return view('user.orders.invoice', compact("order", "pelanggan"));
+    }
+
     public function makeOrderGet(Menu $menus)
     {
         $title = "Make Order";

@@ -69,15 +69,6 @@
                                         <tr>
                                             <td>
                                                 <div class="d-flex py-1 align-items-center">
-                                                    <div class="avatars mr-2">
-                                                        <div class="avatar ratio">
-                                                            <img style="object-fit: cover;
-                                                                                                                                                                                        width: 40px;
-                                                                                                                                                                                     height: 40px;"
-                                                                class="b-r-8"
-                                                                src="{{ Storage::url($order->image) }}?colors=FAD089,FF9C5B,F5634A,ED303C,3B8183">
-                                                        </div>
-                                                    </div>
                                                     <div class="flex-fill">
                                                         <div class="font-weight-bold">&nbsp; {{ $order->menu->name }}</div>
                                                     </div>
@@ -179,8 +170,9 @@
                     window.snap.embed('{{ $snapToken }}', {
                         embedId: 'snap-container',
                         onSuccess: function (result) {
-                            console.log("Payment success:", result);
-                            alert("Payment success!");
+                            window.location.href = '/invoice/{{$order->id}}'
+                            console.log(result);
+                            // alert("Payment success!");
                         },
                         onPending: function (result) {
                             console.log("Payment pending:", result);

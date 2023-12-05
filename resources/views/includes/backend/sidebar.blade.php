@@ -40,7 +40,7 @@
                     </a>
                     <ul class="sidebar-submenu">
                         <li>
-                            <a href="/transaction">
+                            <a href="/pesanan">
                                 Tambah Transaksi
                             </a>
                         </li>

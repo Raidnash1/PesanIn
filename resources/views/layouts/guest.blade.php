@@ -123,8 +123,7 @@
                     {{-- <a class="nav-link link-dark text-grey px-2 me-2" href="{{ route('cart/id') }}">Keranjang</a> --}}
                 </span>
                 <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark">
-                    <a class="text-decoration-none" href="{{ route('logout') }}"
-                        onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <a class="text-decoration-none" href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -308,22 +307,26 @@
             currentValue += 1;
             displayElement.innerHTML = currentValue;
         }
+<<<<<<< HEAD
     </script>
     <script >
+=======
+    <script>
+>>>>>>> 1994105ac8fb99d848a4d118565175ad9713ac64
     function updateDisplay() {
-    numberDisplay.textContent = currentValue;
+        numberDisplay.textContent = currentValue;
     }
 
     function incrementValue() {
-    currentValue++;
-    updateDisplay();
+        currentValue++;
+        updateDisplay();
     }
 
     function decrementValue() {
-    if (currentValue > 0) {
-    currentValue--;
-    updateDisplay();
-    }
+        if (currentValue > 0) {
+            currentValue--;
+            updateDisplay();
+        }
     }
     </script>
 

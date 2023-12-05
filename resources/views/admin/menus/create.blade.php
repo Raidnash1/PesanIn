@@ -110,7 +110,7 @@
                                                 <div class="custom-file">
                                                     <input type="file" name="image" class="custom-file-input"
                                                         id="image" aria-describedby="inputGroupFileAddon01"
-                                                        accept="image/*">>
+                                                        accept="image/*">
                                                     <label class="custom-file-label" for="inputGroupFile01">Pilih file
                                                         gambar yang
                                                         akan kamu upload ..</label>

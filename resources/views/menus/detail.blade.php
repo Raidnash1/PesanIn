@@ -10,8 +10,7 @@
                         <div class="holder position-relative">
                             @foreach ($menus as $menu)
                                 <div class="slides">
-                                    <img src="{{ Storage::url($menu->image) }}" height="480px" width="100%"
-                                        style="object-fit: cover;" alt="{{ $menu->name }}" />
+                                    <img src="{{ url($menu->image) }}" height="480px" width="100%" style="object-fit: cover;" alt="{{ $menu->name }}" />
                                 </div>
                             @endforeach
 
@@ -32,8 +31,7 @@
                             <div class="d-flex flex-row align-items-center">
                                 <div class="btn minus bg-light text-center align-self-center"
                                     style="font-size: 18px; width:35px" onclick="decrementQty()">-</div>
-                                <input class="num text-center border-0 mx-2" style="font-size: 18px; width: 25px"
-                                    name="quantity" id="qtyInput" value="1">
+                                <input class="num text-center border-0 mx-2" style="font-size: 18px; width: 25px" name="quantity" id="qtyInput" value="1">
                                 <div class="btn plus bg-light text-center align-self-center"
                                     style="font-size: 18px; width:35px" onclick="incrementQty()">+</div>
                             </div>

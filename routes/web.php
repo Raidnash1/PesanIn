@@ -27,10 +27,6 @@ Route::post('/carts/checkout', [CartController::class, 'checkout'])->name('cart.
 Route::get('orders', [OrderController::class, 'index']);
 Route::get('/invoice/{id}', [OrderController::class, 'invoice']);
 
-
-
-
-
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');

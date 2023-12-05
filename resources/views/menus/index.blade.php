@@ -176,36 +176,32 @@
                     <div class="row g-3">
 
                         <!-- START LOOP -->
+                        @foreach ($menus as $menu)
                         <div class="col-md-3 float-left">
-                            <form action="">
-                                @foreach ($menus as $menu)
-                                    <a class="col text-start btn" href="{{ route('menus.show', $menu) }}">
+                            <form action="{{ route('cart.addToCart') }}" method="post">
                                         <div class="card card-borderless-shadow card-min-height">
-                                            <img src="{{ Storage::url($menu->image) }}" class="card-img-top" />
+                                            <a href="{{ route('menus.show', $menu) }}"><img src="{{ url($menu->image) }}" class="card-img-top" width="100%" height="200"/></a>
                                             <div class="card-body">
-                                                <table class="table">
+                                                <table class="">
                                                     <tr>
                                                         <td>
-                                                            <h5 class="card-title">{{ $menu->name }}</h5>
+                                                            <a class="card-title h5" href="{{ route('menus.show', $menu) }}" style="text-decoration:none;">{{ $menu->name }}</a>
                                                             <h5 class="card-title fw-bold">
-                                                                Rp.{{ $menu->price }}.000,00
+                                                                Rp.{{ $menu->price }}
                                                             </h5>
                                                         </td>
-                                                        <td class="position-relative">
-                                                            <input class="position-absolute" type="hidden"
-                                                                name="id_menu" value="1">
-                                                            <button type="button" value="{{ $menu->id }}"
-                                                                class="btn text-white bg-warning me-2 addCart"
-                                                                style="font-size: 18px">+</button>
-                                                            {{-- <input class="btn btn-warning position-absolute end-0"
-                                                            type="submit" value="id">+</input> --}}
+                                                        <td class="pl-2 position-relative">
+                                                            <input type="hidden" name="quantity" id="qtyInput" value="1">
+                                                            <input type="hidden" name="id_menu" value="{{ $menu->id }}">
+                                                            <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
+                                                            <button type="submit" class="btn text-white bg-warning me-2 addCart" style="font-size: 18px">+</button>
                                                         </td>
                                                 </table>
                                             </div>
                                         </div>
-                                @endforeach
-                            </form>
-                        </div>
+                                    </form>
+                                </div>
+                        @endforeach
                         <!-- END LOOP -->
 
                     </div>
