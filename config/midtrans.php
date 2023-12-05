@@ -4,7 +4,7 @@
 
 return [
     'merchant_id' => env('MIDTRANS_MERCHANT_ID'),
-    'client_id' => env('MIDTRANS_CLIENT_ID'),
-    'server_id' => env('MIDTRANS_SERVER_ID'),
+    'client_key' => env('MIDTRANS_CLIENT_key'),
+    'server_key' => env('MIDTRANS_SERVER_key'),
 
 ];

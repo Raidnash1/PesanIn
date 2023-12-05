@@ -19,10 +19,11 @@ return new class extends Migration
             $table->foreignId('id_pelanggan');
             $table->integer('quantity');
             $table->float('total_harga');
-            $table->enum('status', ['pending', 'dibayar']);
-            $table->timestamps();
+            $table->enum('status', ['1', '2', '3', '4'])->comment('1=menunggu pembayaran, 2=sudah dibayar, 3=kadaluarsa, 4=batal');
+            $table->string('snap_token', 36)->nullable();
             $table->foreign('id_menu')->references('id')->on('menus');
             $table->foreign('id_pelanggan')->references('id')->on('pelanggans');
+            $table->timestamps();
         });
     }
 

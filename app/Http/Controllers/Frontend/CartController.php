@@ -98,7 +98,7 @@ class CartController extends Controller
                 'id_pelanggan' => $menu->id_pelanggan,
                 'quantity' => $menu->quantity,
                 'total_harga' => $totalHarga,
-                'status' => 'pending',
+                'status' => '1',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
@@ -132,9 +132,17 @@ class CartController extends Controller
             );
 
             $snapToken = \Midtrans\Snap::getSnapToken($params);
-            dd($snapToken);
-
-            // return view('user.orders.index', compact('snapToken', 'params', 'carts'));
+            return view('user.orders.index', compact('snapToken', 'params', 'carts'));
+        }
+    }
+    public function callback(Request $request){
+        $serverKey = config('midtrans.server_key');
+        $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+        if($hashed == $request->signature_key){
+            if($request->transaction_status == 'capture' ){
+                $order = Order::find($request->order_id);
+                $order->update(['status'=>'2']);
+            }
         }
     }
 }

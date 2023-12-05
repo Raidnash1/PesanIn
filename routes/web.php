@@ -2,8 +2,9 @@
 
 use App\Models\Order;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Admin\MenuController;
+use App\Http\Controllers\Admin\PesananController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\TransactionController;
@@ -23,7 +24,12 @@ Route::get('/cart/{id}', [CartController::class, 'index'])->name('cart');
 Route::post('/carts/add', [CartController::class, 'addToCart'])->name('cart.addToCart');
 Route::post('/carts/update', [CartController::class, 'updateCart']);
 Route::post('/carts/checkout', [CartController::class, 'checkout'])->name('cart.checkout');
-Route::get('/orders', [OrderController::class, 'userShow']);
+Route::get('orders', [OrderController::class, 'index']);
+Route::get('/invoice/{id}', [OrderController::class, 'invoice']);
+
+
+
+
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
@@ -38,12 +44,17 @@ Route::get('/orders', [OrderController::class, 'userShow']);
 //         Route::resource('/reservations', ReservationController::class);
 //     });
 // });
-
+Route::get('/pesanan', [PesananController::class, 'index']);
+Route::post('/pesanan/dataAntrian', [PesananController::class, 'dataAntrian']);
+Route::post('/pesanan/dataAntrianSelesai', [PesananController::class, 'dataAntrianSelesai']);
+Route::post('/pesanan/proses', [PesananController::class, 'proses']);
+Route::post('/pesanan/rincianPesanan', [PesananController::class, 'rincianPesanan']);
 Route::middleware(['auth', 'check.role:1'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);
     Route::resource('/menus', MenuController::class);
     Route::resource('/tables', TableController::class);
+    
 });
 
 // Route::middleware(['auth:kedai', 'kedai.admin'])->name('admin.')->prefix('admin')->group(function () {

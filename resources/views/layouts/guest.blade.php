@@ -133,7 +133,7 @@
 
             @guest
                 <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                    onclick="location.href='{{ route('login') }}'" type="button">
+                    onclick="location.href='{{ route('pelanggan.login') }}'" type="button">
                     <i class="fas"></i> Masuk </button>
                 <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
                     onclick="location.href='{{ route('register') }}'" type="button"> <i class="fas"></i>
@@ -197,6 +197,33 @@
         });
     </script>
 
+<script type="text/javascript">
+    // For example trigger on button clicked, or any time you need
+    var payButton = document.getElementById('pay-button');
+    payButton.addEventListener('click', function () {
+      // Trigger snap popup. @TODO: Replace TRANSACTION_TOKEN_HERE with your transaction token.
+      // Also, use the embedId that you defined in the div above, here.
+      window.snap.embed('YOUR_SNAP_TOKEN', {
+        embedId: 'snap-container',
+        onSuccess: function (result) {
+          /* You may add your own implementation here */
+          alert("payment success!"); console.log(result);
+        },
+        onPending: function (result) {
+          /* You may add your own implementation here */
+          alert("wating your payment!"); console.log(result);
+        },
+        onError: function (result) {
+          /* You may add your own implementation here */
+          alert("payment failed!"); console.log(result);
+        },
+        onClose: function () {
+          /* You may add your own implementation here */
+          alert('you closed the popup without finishing the payment');
+        }
+      });
+    });
+  </script>
     <!-- Initializing Feature Section Splide JS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -255,8 +282,7 @@
         });
 
         let currentValue = 0;
-        const numberDisplay = document.getElementById('numberDisplay'); <
-        script >
+        const numberDisplay = document.getElementById('numberDisplay'); 
             function decrementValue() {
                 // Mendapatkan elemen span yang menampilkan quantity
                 var displayElement = document.getElementById('numberDisplay');
@@ -283,6 +309,7 @@
             displayElement.innerHTML = currentValue;
         }
     </script>
+    <script >
     function updateDisplay() {
     numberDisplay.textContent = currentValue;
     }

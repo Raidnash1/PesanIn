@@ -9,12 +9,21 @@ use App\Models\{Menu, Order, Status, Role, Transaction, User};
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        // Ambil data pesanan dari database
+        $orderModel = new Order();
+        $data['orders'] = $orderModel->findAll();
+
+        // Tampilkan view index_order dengan data pesanan
+        return view('user/orders/index', $data);
+    }
     public function makeOrderGet(Menu $menus)
     {
         $title = "Make Order";
         $menus = $menus;
 
-        return view("/order/make_order", compact("title", "product"));
+        return view("user.orders.index", compact("title", "menus"));
     }
 
 
@@ -49,7 +58,7 @@ class OrderController extends Controller
                 "total_price" => $validatedData["total_price"],
                 "payment_id" => $validatedData["payment_method"],
                 "note_id" => ($validatedData["payment_method"] == 1) ? 2 : 1,
-                "status_id" => 2,
+                "status_id" => 1,
                 "transaction_doc" => ($validatedData["payment_method"] == 1) ? env("IMAGE_PROOF") : null,
                 "is_done" => 0,
             ];

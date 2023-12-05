@@ -25,9 +25,9 @@
           <td class="py-3">Rp{{ number_format($totalPrice,2, ',', '.') }}</td>
           <td class="py-3">{{ $order->created_at }}</td>
           <td class="py-3">{{ $order->updated_at }}</td>
-          @if ($order->status == 'success') 
+          @if ($order->status == '2') 
             <th class="py-3 text-success">{{ $order->status }}</th>
-          @elseif (($order->status == 'pending') )
+          @elseif (($order->status == '1') )
             <th class="py-3 text-dark">{{ $order->status }}</th>
           @else
             <th class="py-3 text-danger">{{ $order->status }}</th>
