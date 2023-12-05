@@ -55,7 +55,7 @@
                                                                                                                                                                                         width: 40px;
                                                                                                                                                                                      height: 40px;"
                                                                 class="b-r-8"
-                                                                src="{{ Storage::url($item->image) }}?colors=FAD089,FF9C5B,F5634A,ED303C,3B8183">
+                                                                src="{{ url($item->image) }}">
                                                         </div>
                                                     </div>
                                                     <div class="flex-fill">
@@ -63,7 +63,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>Rp.{{ substr(strip_tags(htmlspecialchars_decode($item->price)), 0, 60) }}.000,00
+                                            <td>Rp.{{ $item->price }}
                                             </td>
                                             <td>
 

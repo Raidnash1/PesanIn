@@ -10,7 +10,7 @@
                         <div class="holder position-relative">
                             @foreach ($menus as $menu)
                                 <div class="slides">
-                                    <img src="{{ Storage::url($menu->image) }}" height="480px" width="100%"
+                                    <img src="{{ url($menu->image) }}" height="480px" width="100%"
                                         style="object-fit: cover;" alt="{{ $menu->name }}" />
                                 </div>
                             @endforeach

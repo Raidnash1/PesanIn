@@ -3,8 +3,8 @@
 
 
 return [
-    'merchant_id' => env('MIDTRANS_MERCHANT_ID'),
-    'client_id' => env('MIDTRANS_CLIENT_ID'),
-    'server_id' => env('MIDTRANS_SERVER_ID'),
+    'merchant_id' => env('G864520629'),
+    'client_id' => env('Mid-client-BkzjzVFB7BL5Z95j'),
+    'server_id' => env('Mid-server-vHfrH_l86EHwhHFS8qsXdvqi'),
 
 ];

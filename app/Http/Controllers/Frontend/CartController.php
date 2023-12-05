@@ -134,7 +134,7 @@ class CartController extends Controller
             $snapToken = \Midtrans\Snap::getSnapToken($params);
             dd($snapToken);
 
-            // return view('user.orders.index', compact('snapToken', 'params', 'carts'));
+            return view('user.orders.index', compact('snapToken', 'params', 'carts'));
         }
     }
 }
