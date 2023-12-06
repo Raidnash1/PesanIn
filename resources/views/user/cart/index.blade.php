@@ -93,51 +93,8 @@
                                 <h5>Total Harga</h5>
                                 <h5>Rp. {{ number_format($totalHarga, 2, ',', '.') }}</h5>
                             </div>
-                            
-                            <div id="snap-container"></div>
-    <button id="pay-button">Pay Now</button>
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            var payButton = document.getElementById('pay-button');
-
-            payButton.addEventListener('click', function () {
-                console.log("Pay button clicked");
-
-                // Check if Snap.js is loaded
-                if (window.snap) {
-                    console.log("Snap.js is loaded");
-
-                    // Check if the snapToken is available
-                    console.log("snapToken: ", '{{ $snapToken }}');
-
-                    // Trigger snap popup
-                    window.snap.embed('{{ $snapToken }}', {
-                        embedId: 'snap-container',
-                        onSuccess: function (result) {
-                            window.location.href = '/invoice/{{$order->id}}'
-                            console.log(result);
-                            // alert("Payment success!");
-                        },
-                        onPending: function (result) {
-                            console.log("Payment pending:", result);
-                            alert("Waiting for your payment!");
-                        },
-                        onError: function (result) {
-                            console.log("Payment failed:", result);
-                            alert("Payment failed!");
-                        },
-                        onClose: function () {
-                            console.log("Popup closed without finishing payment");
-                            alert('You closed the popup without finishing the payment');
-                        }
-                    });
-                } else {
-                    console.error("Snap.js is not loaded");
-                }
-            });
-        });
-    </script>
+                            <button type="submit" class="btn btn-warning px-5 mt-3"
+                                data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Beli</button>
                         </div>
                     </div>
                 </form>
@@ -146,6 +103,4 @@
         @endif
     </div>
     </div>
-
-    
 </x-guest-layout>

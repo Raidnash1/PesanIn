@@ -23,7 +23,7 @@
                         <div class="d-flex flex-row justify-content-between w-100 mt-2 ">
                             <h3 class="m-0" style="font-weight:600 ">
                                 @php
-                                    echo 'Rp' . number_format($menu->price, 2, ',', '.');
+                                    echo 'Rp' . number_format($menu->price);
                                 @endphp
                             </h3>
 
