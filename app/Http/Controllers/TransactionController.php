@@ -16,7 +16,6 @@ class TransactionController extends Controller
         return view("/transaction/index", compact("title", "transactions"));
     }
 
-
     public function addOutcomeGet()
     {
         $title = "Add Outcome";
@@ -24,7 +23,6 @@ class TransactionController extends Controller
 
         return view("/transaction/add_outcome", compact("title", "categories"));
     }
-
 
     public function addOutcomePost(Request $request)
     {
@@ -75,7 +73,6 @@ class TransactionController extends Controller
 
         if ($transaction->isDirty()) {
             $transaction->save();
-
 
             $message = "Transaction updated successfully!";
 

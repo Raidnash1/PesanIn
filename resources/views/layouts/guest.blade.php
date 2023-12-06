@@ -307,12 +307,7 @@
             currentValue += 1;
             displayElement.innerHTML = currentValue;
         }
-<<<<<<< HEAD
-    </script>
-    <script >
-=======
     <script>
->>>>>>> 1994105ac8fb99d848a4d118565175ad9713ac64
     function updateDisplay() {
         numberDisplay.textContent = currentValue;
     }

@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatable-extension.css') }}">
 @endpush
 
-<div class="row">
+<div class="row py-4">
     <div class="col-lg-6 grid-margin">
         <div class="card">
             <div class="card-body">
@@ -28,6 +28,12 @@
                             </tr>
                         </thead>
                         <tbody id="tabelAntrian">
+                            <tr>
+                                <td>1</td>
+                                <td>Raid</td>
+                                <td>Menunggu Pembayaran</td>
+                                <td><button class="btn btn-succes text-dark">Ubah</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -37,7 +43,7 @@
     <div class="col-lg-6 grid-margin stretch-card">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Data Pelanggan yang telah Selesai</h4>
+                <h4 class="card-title">Pesanan Selesai</h4>
                 <p class="card-description">
                     Pesanan pelanggan sudah dihidangkan hari ini.
                 </p>
@@ -52,6 +58,12 @@
                             </tr>
                         </thead>
                         <tbody id="tabelAntrianSelesai">
+                            <tr>
+                                <td>21392031</td>
+                                <td>Wahyu</td>
+                                <td>Selesai</td>
+                                <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalRincinan">Rincian</button></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -267,6 +279,7 @@
 </script>
 
 @push('datatable-scripts')
+            <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> -->
             <script src="{{ url('cuba/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
             <script src="{{ url('cuba/assets/js/datatable/datatable-extension/dataTables.buttons.min.js') }}"></script>
             <script src="{{ url('cuba/assets/js/datatable/datatable-extension/jszip.min.js') }}"></script>

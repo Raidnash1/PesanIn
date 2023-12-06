@@ -174,36 +174,27 @@
 
                 <div class="col-md-9">
                     <div class="row g-3">
-
                         <!-- START LOOP -->
                         @foreach ($menus as $menu)
-                        <div class="col-md-3 float-left">
+                        <div class="col-md-3 float-left position-relative">
                             <form action="{{ route('cart.addToCart') }}" method="post">
-                                        <div class="card card-borderless-shadow card-min-height">
-                                            <a href="{{ route('menus.show', $menu) }}"><img src="{{ url($menu->image) }}" class="card-img-top" width="100%" height="200"/></a>
-                                            <div class="card-body">
-                                                <table class="">
-                                                    <tr>
-                                                        <td>
-                                                            <a class="card-title h5" href="{{ route('menus.show', $menu) }}" style="text-decoration:none;">{{ $menu->name }}</a>
-                                                            <h5 class="card-title fw-bold">
-                                                                Rp.{{ $menu->price }}
-                                                            </h5>
-                                                        </td>
-                                                        <td class="pl-2 position-relative">
-                                                            <input type="hidden" name="quantity" id="qtyInput" value="1">
-                                                            <input type="hidden" name="id_menu" value="{{ $menu->id }}">
-                                                            <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
-                                                            <button type="submit" class="btn text-white bg-warning me-2 addCart" style="font-size: 18px">+</button>
-                                                        </td>
-                                                </table>
-                                            </div>
+                                <div class="card card-borderless-shadow card-min-height">
+                                    <a href="{{ route('menus.show', $menu) }}"><img src="{{ url($menu->image) }}" class="card-img-top" width="100%" height="200"/></a>
+                                    <div class="card-body">
+                                        <a class="card-title fs-5 text-black" href="{{ route('menus.show', $menu) }}" style="text-decoration: none;">{{ $menu->name }}</a>
+                                        <h5 class="card-title fw-bold">Rp.{{ $menu->price }}</h5>
+                                        <div class="position-absolute bottom-0 end-0 mb-3 p-2">
+                                            <input type="hidden" name="quantity" id="qtyInput" value="1">
+                                            <input type="hidden" name="id_menu" value="{{ $menu->id }}">
+                                            <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
+                                            <button type="submit" class="btn text-black bg-warning me-2 addCart" style="font-size: 18px">+</button>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
+                            </form>
+                        </div>
                         @endforeach
                         <!-- END LOOP -->
-
                     </div>
                 </div>
             </div>

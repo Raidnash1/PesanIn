@@ -30,3 +30,4 @@
 <link id="color" rel="stylesheet" href="{{ url('cuba/assets/css/color-2.css') }}" media="screen">
 <!-- Responsive css-->
 <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/responsive.css') }}">
+<!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> -->
