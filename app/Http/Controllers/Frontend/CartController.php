@@ -56,7 +56,8 @@ class CartController extends Controller
                 'updated_at' => now(),
             ]);
 
-            return redirect("cart/$request->id_menu");
+            return redirect()->back();
+            // return redirect("cart/$request->id_menu");
         } else {
             // Pengguna belum login, arahkan ke halaman login
             return redirect()->route('login')->with('error', 'Anda harus login untuk menambahkan ke keranjang.');
@@ -138,6 +139,7 @@ class CartController extends Controller
             return view('user.orders.index', compact('snapToken', 'params', 'carts'));
         }
     }
+    
     public function callback(Request $request){
         $serverKey = config('midtrans.server_key');
         $hashed = hash("sha512", $request->order_id.$request->status_code.$request->gross_amount.$serverKey);

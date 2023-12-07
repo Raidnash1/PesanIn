@@ -15,7 +15,6 @@
                             @endforeach
 
                         </div>
-
                     </div>
                     <form class="col d-flex flex-column ms-3" action="{{ route('cart.addToCart') }}" method="POST">
                         @csrf
@@ -37,8 +36,8 @@
 
                         <div class="d-flex flex-row align-items-center w-100 ms-0">
                             @if (Auth::guard('pelanggan')->check())
-                                <input type="text" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
-                                <input type="text" name="id_menu" value="{{ $menu->id }}">
+                                <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
+                                <input type="hidden" name="id_menu" value="{{ $menu->id }}">
                                 <button type="submit" class="btn text-black bg-warning me-2 addCart" style="font-size: 18px">Tambahkan ke Keranjang</button>
                             @else
                                 <a href="{{ route('pelanggan.login') }}" class="btn text-black bg-secondary me-2" style="font-size: 18px">Login untuk Tambahkan ke Keranjang</a>
