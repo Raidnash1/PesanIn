@@ -9,7 +9,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('paket_langganan', function (Blueprint $table) {
+        Schema::create('paket_langganans', function (Blueprint $table) {
             $table->id();
             $table->string('nama_paket');
             $table->text('description')->nullable();

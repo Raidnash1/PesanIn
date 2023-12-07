@@ -33,6 +33,7 @@
                                 </div>
                             @endif
                             <input type="hidden" name="role" value="1">
+                            <input type="hidden" name="paket_langganan_id" value="1">
                             <label class="col-form-label">Nama User</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">

@@ -46,15 +46,17 @@
             <h1>Berlangganan</h1> <br><br>
             <div class="row">
                 <div class="row">
+                    
                     <div class="col-sm-6 mb-3 mb-sm-0">
                       <div class="card">
                         <div class="card-body">
                           <h5 class="card-title">Coba gratis</h5>
                           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Gratis</a>
+                          <a href="{{ Auth::check() ? route('Langganan', ['id' => $paket_langganan->id]) : route('register') }}" class="btn btn-primary">Gratis</a>
                         </div>
                       </div>
                     </div>
+                    
                     <div class="col-sm-6">
                       <div class="card">
                         <div class="card-body">

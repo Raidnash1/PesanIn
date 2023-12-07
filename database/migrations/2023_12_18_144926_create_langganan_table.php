@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('langganan', function (Blueprint $table) {
+        Schema::create('langganans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id'); // Relasi ke tabel users
             $table->foreignId('paket_langganan_id'); // Relasi ke tabel subscription_packages
@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamp('end_date')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('paket_langganan_id')->references('id')->on('paket_langganan');
+            $table->foreign('paket_langganan_id')->references('id')->on('paket_langganans');
         });
     }
 
