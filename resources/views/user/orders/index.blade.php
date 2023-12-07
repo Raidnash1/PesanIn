@@ -45,23 +45,20 @@
     </style>
 </head>
 <body>
-<h4>Your Orders</h4>
-
-<div class="row">
-    <div class="col-sm-12">
+<div class="container-sm float-left pt-5">
+    <div class="row">
+        <div class="col-sm-8">
+        <h4>Rincian Pesanan</h4>
         <div class="card">
             <div class="card-body">
                 <div class="dt-ext table-responsive">
-                    <table class="display" id="auto-fill">
+                    <table class="table g-3" id="auto-fill">
                                 <thead>
                                     <tr>
                                     <th>Menu</th>
-                <th>Banyak</th>
-                <th>Total Price</th>
-                <th>Date Transaction</th>
-                <th>Update at</th>
-                <th>Status</th>
-                <th>Status</th>
+                                <th>Banyak</th>
+                                <th>Total Price</th>
+                                <th>Date Transaction</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -77,15 +74,6 @@
                                             <td>{{ $order->quantity }}
                                             </td>
                                             <td>Rp{{ number_format($order->menu->price * $order->quantity, 2, ',', '.') }}</td>
-                    <td>{{ $order->created_at }}</td>
-                    <td>{{ $order->updated_at }}</td>
-                    <td>
-                    @if ($order->status == '1')
-                                    <button class="btn btn-primary" onclick="openPaymentPopup('{{ $order->id }}')">Bayar</button>
-                                @else
-                                    Sudah Dibayar
-                                @endif
-                    </td>
                                             <td>
 
                                                 <a href="{{ route('admin.menus.edit', $order->id) }}"
@@ -131,26 +119,16 @@
                                     @empty
                                     @endforelse
                                 </tbody>
-                                <tfoot>
-                                    <tr>
-                                    <th>Menu</th>
-                <th>Banyak</th>
-                <th>Total Price</th>
-                <th>Date Transaction</th>
-                <th>Update at</th>
-                <th>Status</th>
-                <th>Status</th>
-                                    </tr>
-                                </tfoot>
                                 </table>
                     </div>
                 </div>
             </div>
+            <button class="btn btn-primary" id="pay-button">Pay Now</button>
         </div>
+        <div  class="col-sm-4" id="snap-container"></div>
+    </div>
     </div>
 
-    <div id="snap-container"></div>
-    <button id="pay-button">Pay Now</button>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function () {

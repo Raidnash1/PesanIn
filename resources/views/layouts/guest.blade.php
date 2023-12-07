@@ -116,7 +116,9 @@
                     <li class="nav-item me-2">
                         <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
                     </li>
-                    <li class="text-decoration-none">
+                    <li class="nav-item me-2">
+                        <a href="{{ route('cart', Auth::guard('pelanggan')->id()) }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
+                    </li>
                 </ul>
 
                 <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
@@ -148,7 +150,7 @@
     </main>
 
     <!-- --------------------------- Footer Section ---------------------------- -->
-    <footer class="py-5">
+    <footer class="py-5 position-absolute start-0 end-0">
         <div class="container">
             <div class="row text-black">
                 <div class="col-md-6">
@@ -307,6 +309,8 @@
             currentValue += 1;
             displayElement.innerHTML = currentValue;
         }
+    </script>
+
     <script>
     function updateDisplay() {
         numberDisplay.textContent = currentValue;

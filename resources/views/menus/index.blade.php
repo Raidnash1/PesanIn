@@ -177,7 +177,8 @@
                         <!-- START LOOP -->
                         @foreach ($menus as $menu)
                         <div class="col-md-3 float-left position-relative">
-                            <form action="{{ route('cart.addToCart') }}" method="post">
+                            <form action="{{ route('cart.addToCart') }}" method="POST">
+                                @csrf
                                 <div class="card card-borderless-shadow card-min-height">
                                     <a href="{{ route('menus.show', $menu) }}"><img src="{{ url($menu->image) }}" class="card-img-top" width="100%" height="200"/></a>
                                     <div class="card-body">
