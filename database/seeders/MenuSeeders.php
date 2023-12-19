@@ -17,7 +17,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 5000,
             'user_id' => 1,
-            'image' => 'image/menu/teh.jpg'
+            'image' => 'images/menu/teh.jpg'
         ]);
 
         Menu::create([
@@ -25,7 +25,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 5000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-tubruk.jpg'
+            'image' => 'images/menu/teh-tubruk.jpg'
         ]);
 
         Menu::create([
@@ -33,7 +33,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-krampul.jpg'
+            'image' => 'images/menu/teh-krampul.jpg'
         ]);
 
         Menu::create([
@@ -41,7 +41,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-lemon.jpg'
+            'image' => 'images/menu/teh-lemon.jpg'
         ]);
 
         Menu::create([
@@ -49,7 +49,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-vanilla.jpg'
+            'image' => 'images/menu/teh-vanilla.jpg'
         ]);
 
         Menu::create([
@@ -57,7 +57,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-jahe.jpg'
+            'image' => 'images/menu/teh-jahe.jpg'
         ]);
 
         Menu::create([
@@ -65,7 +65,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 10000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-tarik.jpg'
+            'image' => 'images/menu/teh-tarik.jpg'
         ]);
 
         Menu::create([
@@ -73,7 +73,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 12000,
             'user_id' => 1,
-            'image' => 'image/menu/teh-leci.jpg'
+            'image' => 'images/menu/teh-leci.jpg'
         ]);
 
         Menu::create([
@@ -81,7 +81,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/jeruk-nipis.jpg'
+            'image' => 'images/menu/jeruk-nipis.jpg'
         ]);
 
         Menu::create([
@@ -89,7 +89,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/jeruk-peras.jpg'
+            'image' => 'images/menu/jeruk-peras.jpg'
         ]);
 
         // Data Baru
@@ -98,7 +98,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 12000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-sumatra-mandailing.jpg'
+            'image' => 'images/menu/kopi-sumatra-mandailing.jpg'
         ]);
 
         Menu::create([
@@ -106,7 +106,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 12000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-jawa-arabika.jpg'
+            'image' => 'images/menu/kopi-jawa-arabika.jpg'
         ]);
 
         Menu::create([
@@ -114,7 +114,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 11000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-klasik.jpg'
+            'image' => 'images/menu/kopi-klasik.jpg'
         ]);
 
         Menu::create([
@@ -122,7 +122,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 9000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-tubruk-jinawi.jpg'
+            'image' => 'images/menu/kopi-tubruk-jinawi.jpg'
         ]);
 
         Menu::create([
@@ -130,7 +130,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-tubruk.jpg'
+            'image' => 'images/menu/kopi-tubruk.jpg'
         ]);
 
         Menu::create([
@@ -138,7 +138,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 9000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-tubruk-gula-aren.jpg'
+            'image' => 'images/menu/kopi-tubruk-gula-aren.jpg'
         ]);
 
         Menu::create([
@@ -146,7 +146,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 1000,
             'user_id' => 1,
-            'image' => 'image/menu/kopi-susu-tubruk.jpg'
+            'image' => 'images/menu/kopi-susu-tubruk.jpg'
         ]);
 
         Menu::create([
@@ -154,7 +154,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 17000,
             'user_id' => 1,
-            'image' => 'image/menu/es-kopi-susu.jpg'
+            'image' => 'images/menu/es-kopi-susu.jpg'
         ]);
 
         Menu::create([
@@ -162,7 +162,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 19000,
             'user_id' => 1,
-            'image' => 'image/menu/es-kopsus-gula-aren.jpg'
+            'image' => 'images/menu/es-kopsus-gula-aren.jpg'
         ]);
 
         Menu::create([
@@ -170,7 +170,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/americano.jpg'
+            'image' => 'images/menu/americano.jpg'
         ]);
 
         Menu::create([
@@ -178,7 +178,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/jus-alpukan.jpg'
+            'image' => 'images/menu/jus-alpukan.jpg'
         ]);
 
         Menu::create([
@@ -186,7 +186,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/jus-strawberry.jpg'
+            'image' => 'images/menu/jus-strawberry.jpg'
         ]);
 
         Menu::create([
@@ -194,7 +194,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 12000,
             'user_id' => 1,
-            'image' => 'image/menu/jus-pisang.jpg'
+            'image' => 'images/menu/jus-pisang.jpg'
         ]);
 
         Menu::create([
@@ -202,7 +202,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 6000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-jahe.jpg'
+            'image' => 'images/menu/wedang-jahe.jpg'
         ]);
 
         Menu::create([
@@ -210,7 +210,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-jahe-susu.jpg'
+            'image' => 'images/menu/wedang-jahe-susu.jpg'
         ]);
 
         Menu::create([
@@ -218,7 +218,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-tape.jpg'
+            'image' => 'images/menu/wedang-tape.jpg'
         ]);
 
         Menu::create([
@@ -226,7 +226,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-uwuh.jpg'
+            'image' => 'images/menu/wedang-uwuh.jpg'
         ]);
 
         Menu::create([
@@ -234,7 +234,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-secang.jpg'
+            'image' => 'images/menu/wedang-secang.jpg'
         ]);
 
         Menu::create([
@@ -242,7 +242,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 8000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-sereh.jpg'
+            'image' => 'images/menu/wedang-sereh.jpg'
         ]);
 
         Menu::create([
@@ -250,7 +250,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 9000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-seruni.jpg'
+            'image' => 'images/menu/wedang-seruni.jpg'
         ]);
 
         Menu::create([
@@ -258,7 +258,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 11000,
             'user_id' => 1,
-            'image' => 'image/menu/wedang-tape-susu.jpg'
+            'image' => 'images/menu/wedang-tape-susu.jpg'
         ]);
 
         Menu::create([
@@ -266,7 +266,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/es-sirup.jpg'
+            'image' => 'images/menu/es-sirup.jpg'
         ]);
 
         Menu::create([
@@ -274,7 +274,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 9000,
             'user_id' => 1,
-            'image' => 'image/menu/susu-sirup.jpg'
+            'image' => 'images/menu/susu-sirup.jpg'
         ]);
 
         Menu::create([
@@ -282,7 +282,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/susu-putih.jpg'
+            'image' => 'images/menu/susu-putih.jpg'
         ]);
 
         Menu::create([
@@ -290,7 +290,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 7000,
             'user_id' => 1,
-            'image' => 'image/menu/susu-coklat.jpg'
+            'image' => 'images/menu/susu-coklat.jpg'
         ]);
 
         Menu::create([
@@ -298,7 +298,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 11000,
             'user_id' => 1,
-            'image' => 'image/menu/milo.jpg'
+            'image' => 'images/menu/milo.jpg'
         ]);
 
         Menu::create([
@@ -306,7 +306,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 11000,
             'user_id' => 1,
-            'image' => 'image/menu/cappuccino.jpg'
+            'image' => 'images/menu/cappuccino.jpg'
         ]);
 
         Menu::create([
@@ -314,7 +314,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 11000,
             'user_id' => 1,
-            'image' => 'image/menu/es-suklat-klasik.jpg'
+            'image' => 'images/menu/es-suklat-klasik.jpg'
         ]);
 
         Menu::create([
@@ -322,7 +322,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 16000,
             'user_id' => 1,
-            'image' => 'image/menu/soda-gembira.jpg'
+            'image' => 'images/menu/soda-gembira.jpg'
         ]);
 
         Menu::create([
@@ -330,7 +330,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/strawberry-blend.jpg'
+            'image' => 'images/menu/strawberry-blend.jpg'
         ]);
 
         Menu::create([
@@ -338,7 +338,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/coklat-blend.jpg'
+            'image' => 'images/menu/coklat-blend.jpg'
         ]);
 
         Menu::create([
@@ -346,7 +346,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/grape-blend.jpg'
+            'image' => 'images/menu/grape-blend.jpg'
         ]);
 
         Menu::create([
@@ -354,7 +354,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/vanilla-blend.jpg'
+            'image' => 'images/menu/vanilla-blend.jpg'
         ]);
 
         Menu::create([
@@ -362,7 +362,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/orange-squash.jpg'
+            'image' => 'images/menu/orange-squash.jpg'
         ]);
 
         Menu::create([
@@ -370,7 +370,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/lime-squash.jpg'
+            'image' => 'images/menu/lime-squash.jpg'
         ]);
 
         Menu::create([
@@ -378,7 +378,7 @@ class MenuSeeders extends Seeder
             'description' => 'Deskripsi belum tersedia',
             'price' => 14000,
             'user_id' => 1,
-            'image' => 'image/menu/lime-squash.jpg'
+            'image' => 'images/menu/lime-squash.jpg'
         ]);
     }
 }
