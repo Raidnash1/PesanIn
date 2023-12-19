@@ -64,7 +64,6 @@
 
                     <div class="input-group mb-3">
                         <!-- Input hidden untuk menyimpan data -->
-                        <input type="hidden" name="informasi_rahasia" value="Nilai Rahasia yang Tidak Terlihat">
                         <input type="hidden" name="total_harga" value="{{ number_format($totalHarga, 2, ',', '.') }}">
                         <!-- Anda mungkin perlu mengganti ini dengan data yang sesuai -->
                         <input type="hidden" name="quantity" value="{{ $carts->sum('quantity') }}">

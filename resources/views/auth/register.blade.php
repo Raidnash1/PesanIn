@@ -106,6 +106,7 @@
                                 <input class="form-control" type="password" name="password_confirmation"
                                     id="password_confirmation" required placeholder="*********">
                             </div>
+                            
 
                             <div class="form-group mb-0">
 

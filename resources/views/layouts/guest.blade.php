@@ -116,9 +116,12 @@
                     <li class="nav-item me-2">
                         <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
                     </li>
-                    <li class="nav-item me-2">
-                        <a href="{{ route('cart', Auth::guard('pelanggan')->id()) }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
-                    </li>
+                        {{-- Check if cart is not empty --}}
+    @if(!empty($cartItems))
+    <li class="nav-item me-2">
+        <a href="{{ route('cart', Auth::guard('pelanggan')->id()) }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
+    </li>
+@endif
                 </ul>
 
                 <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">

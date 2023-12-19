@@ -10,13 +10,15 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.14.0",
+        "@typescript-eslint/parser": "^6.14.0",
         "alpinejs": "^3.4.2",
         "autoprefixer": "^10.4.2",
         "axios": "^0.25",
+        "eslint": "^8.55.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
         "postcss": "^8.4.6",
         "postcss-import": "^14.0.2"
-    },
-    "dependencies": {}
+    }
 }

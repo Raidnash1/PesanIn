@@ -32,6 +32,57 @@
                         <span>Menu</span>
                     </a>
                 </li>
+                <li class="sidebar-main-title">
+                    <div>
+                        <h6>Kelola Kategori & Menu</h6>
+                        <p>Data Kategori & Menu</p>
+                    </div>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title" href="#">
+                        <i data-feather="grid"></i>
+                        <span>Kategori Makanan</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li class="active">
+                            <a href="{{ url('/admin/categories') }}">
+                                Data Kategori Makanan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/admin/categories/create') }}">
+                                Tambah Kategori Makanan / Minuman
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-main-title">
+                    <div>
+                        <h6>Kelola Meja & Reservasi</h6>
+                        <p>Data Meja & Reservasi</p>
+                    </div>
+                </li>
+
+                <li class="sidebar-list">
+                    <a class="sidebar-link sidebar-title" href="#">
+                        <i data-feather="users"></i>
+                        <span>Data Meja Restawrant</span>
+                    </a>
+                    <ul class="sidebar-submenu">
+                        <li>
+                            <a href="{{ url('/admin/tables') }}">
+                                Daftar Meja di Restawrant
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/admin/tables/create') }}">
+                                Tambah Data Meja Baru
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="sidebar-list">
                     <a class="sidebar-link sidebar-title" href="#">

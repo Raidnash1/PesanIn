@@ -43,33 +43,26 @@
     <!-- ------------------------ #1 Feature Section ------------------------ -->
     <section class="my-100" id="tentang-kami">
         <div class="container">
-            <h1>Berlangganan</h1> <br><br>
+            <h1>Berlangganan</h1><br><br>
             <div class="row">
-                <div class="row">
-                    
+    
+                @foreach($paketLangganan as $paket)
                     <div class="col-sm-6 mb-3 mb-sm-0">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Coba gratis</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="{{ Auth::check() ? route('Langganan', ['id' => $paket_langganan->id]) : route('register') }}" class="btn btn-primary">Gratis</a>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $paket->nama_paket }}</h5>
+                                <p class="card-text">{{ $paket->description }}</p>
+                                <a href="{{ Auth::check() ? route('Langganan', ['id' => $paket->id]) : route('register') }}" class="btn btn-primary">{{ $paket->type == 'free' ? 'Gratis' : 'Berlangganan' }}</a>
+                            </div>
                         </div>
-                      </div>
                     </div>
-                    
-                    <div class="col-sm-6">
-                      <div class="card">
-                        <div class="card-body">
-                          <h5 class="card-title">Biaya Bulanan</h5>
-                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                          <a href="#" class="btn btn-primary">Berlangganan</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                @endforeach
+    
             </div>
         </div>
     </section>
+    
+    
 
     <!-- ------------------------ CTA Social Media Section ------------------------ -->
     <section>
