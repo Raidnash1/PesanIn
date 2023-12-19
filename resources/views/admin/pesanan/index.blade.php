@@ -21,19 +21,27 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Meja</th>
-                                <th>Nama</th>
+                                <th>ID</th>
+                                <th>Menu</th>
+                                <th>Pelanggan</th>
+                                <th>Quantity</th>
+                                <th>Total Harga</th>
                                 <th>Status</th>
                                 <th>Ubah</th>
                             </tr>
                         </thead>
                         <tbody id="tabelAntrian">
+                            @foreach ($orders as $order)
                             <tr>
-                                <td>1</td>
-                                <td>Raid</td>
-                                <td>Menunggu Pembayaran</td>
-                                <td><button class="btn btn-succes text-dark">Ubah</button></td>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->menu->name }}</td>
+                                <td>{{ $order->pelanggan->nama }}</td>
+                                <td>{{ $order->quantity }}</td>
+                                <td>{{ $order->total_harga }}</td>
+                                <td>{{ $order->status }}</td>
+                                <td><button class="btn btn-success text-dark">Ubah</button></td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = ['id'];
-    public function user()
+    public function pelanggan()
     {
-        return $this->belongsTo(User::class, 'id_user');
+        return $this->belongsTo(Pelanggan::class, 'id_pelanggan');
     }
     public function menu()
     {

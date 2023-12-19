@@ -146,7 +146,21 @@ class CartController extends Controller
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture' ){
                 $order = Order::find($request->order_id);
-                $order->update(['status'=>'2']);
+                if ($order) {
+                    // Lakukan logging atau dump untuk debugging
+                    Log::info('Order found: '.$order);
+                    
+                    // Periksa status transaksi sebelum memperbarui
+                    if ($request->transaction_status == 'capture') {
+                        // Update status pesanan
+                        $order->update(['status' => '2']);
+                        Log::info('Order status updated to "2"');
+                    } else {
+                        Log::warning('Unexpected transaction status: '.$request->transaction_status);
+                    }
+                } else {
+                    Log::warning('Order not found with ID: '.$request->order_id);
+                }
             }
         }
     }
