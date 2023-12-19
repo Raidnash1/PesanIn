@@ -43,4 +43,8 @@ class Pelanggan extends Authenticatable
     {
         return $this->hasMany(Cart::class, 'id_pelanggan');
     }
+    public function Order()
+    {
+        return $this->hasMany(Order::class, 'id_order');
+    }
 }

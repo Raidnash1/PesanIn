@@ -14,10 +14,11 @@ class PesananController extends Controller
     {
         // Ambil data pesanan dari database
         $orderModel = new Order();
-        $data['orders'] = $orderModel->get();
+        $orders['orders'] = $orderModel->get();
+        
 
         // Tampilkan view index_order dengan data pesanan
-        return view('admin.pesanan.index', $data);
+        return view('admin.pesanan.index', $orders);
     }
 
     public function dataAntrian()
