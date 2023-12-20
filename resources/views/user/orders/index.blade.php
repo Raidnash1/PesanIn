@@ -1,4 +1,4 @@
-<x-guest-layout>
+
 
 <section>
 
@@ -174,4 +174,3 @@
         });
     </script>
     </section>
-    </x-guest-layout>
