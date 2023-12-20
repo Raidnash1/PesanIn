@@ -188,7 +188,11 @@
                                             <input type="hidden" name="quantity" id="qtyInput" value="1">
                                             <input type="hidden" name="id_menu" value="{{ $menu->id }}">
                                             <input type="hidden" name="id_pelanggan" value="{{ Auth::guard('pelanggan')->id() }}">
+                                            @if(Auth::guard('pelanggan')->check())
                                             <button type="submit" class="btn text-black bg-warning me-2 addCart" style="font-size: 18px">+</button>
+                                            @else
+                                            <a href="{{ route('pelanggan.login') }}" class="btn text-black bg-warning me-2 addCart" style="font-size: 18px;text-decoration:none;">+</a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

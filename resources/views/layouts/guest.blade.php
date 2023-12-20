@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -117,11 +118,16 @@
                         <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
                     </li>
                         {{-- Check if cart is not empty --}}
-    @if(!empty($cartItems))
+
+    @if(Auth::guard('pelanggan')->check())
     <li class="nav-item me-2">
         <a href="{{ route('cart', Auth::guard('pelanggan')->id()) }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
     </li>
-@endif
+    @else
+    <li class="nav-item me-2">
+        <a href="{{ route('pelanggan.login') }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
+    </li>
+    @endif
                 </ul>
 
                 <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">

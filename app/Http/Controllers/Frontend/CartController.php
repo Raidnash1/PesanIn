@@ -93,9 +93,7 @@ class CartController extends Controller
         $totalHarga = $carts->sum(function ($cart) {
             return $cart->menu->price * $cart->quantity;
         });
-
-        $orderIds = []; // Menyimpan ID order yang baru saja dibuat
-
+        
         foreach ($carts as $menu) {
             $order = Order::create([
                 'id_menu' => $menu->id_menu,
@@ -106,7 +104,7 @@ class CartController extends Controller
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
             ]);
-
+            
             // Simpan ID order ke dalam array
             $orderIds[] = $order->id;
 
@@ -134,7 +132,7 @@ class CartController extends Controller
                     'email' => $pelanggan->email,
                 ),
             );
-
+            // dd($params);
             $snapToken = \Midtrans\Snap::getSnapToken($params);
             return view('user.orders.index', compact('snapToken', 'params', 'carts'));
         }

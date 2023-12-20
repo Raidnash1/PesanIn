@@ -50,7 +50,7 @@ class RegisteredPelangganController extends Controller
             'user_id' => $request->user_id
 
         ]);
-        return redirect('/menus');
+        return redirect('pelanggan/login');
         // event(new Registered($user));
 
         // Auth::login($user);

@@ -1,18 +1,16 @@
 <x-guest-layout>
 
     <section>
-
-        <div class="d-flex justify-content-center my-5">
+        <div class="d-flex justify-content-center my-5 mb-5 pb-5">
             <div style="width: 80%">
-
                 <div class="row">
                     <div class="col">
                         <div class="holder position-relative">
                             @foreach ($menus as $menu)
+                            @endforeach
                                 <div class="slides">
                                     <img src="{{ url($menu->image) }}" height="480px" width="100%" style="object-fit: cover;" alt="{{ $menu->name }}" />
                                 </div>
-                            @endforeach
 
                         </div>
                     </div>
