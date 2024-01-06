@@ -23,8 +23,9 @@ class OrderController extends Controller
     {
         // Ambil data pesanan dari database
         $order = Order::find($id);
-        $pelanggan = Pelanggan::find(Auth::guard('pelanggan')->id());
-        return view('user.orders.invoice', compact("order", "pelanggan"));
+        
+        return view('user.orders.invoice', compact('order'));
+        // return view('transaksi');
     }
 
     public function makeOrderGet(Menu $menus)

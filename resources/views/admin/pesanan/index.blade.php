@@ -10,7 +10,7 @@
 @endpush
 
 <div class="row py-4">
-    <div class="col-lg-6 grid-margin">
+    <div class="col-lg-12 grid-margin">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Data Pelanggan</h4>
@@ -38,40 +38,14 @@
                                 <td>{{ $order->pelanggan->nama }}</td>
                                 <td>{{ $order->quantity }}</td>
                                 <td>{{ $order->total_harga }}</td>
-                                <td>{{ $order->status }}</td>
+                                @if ($order->status == 1)
+                                    <td>Menunggu Pembayaran</td>
+                                @elseif ($order->status == 2)
+                                    <td>Lunas</td>
+                                @endif
                                 <td><button class="btn btn-success text-dark">Ubah</button></td>
                             </tr>
                         @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-6 grid-margin stretch-card">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Pesanan Selesai</h4>
-                <p class="card-description">
-                    Pesanan pelanggan sudah dihidangkan hari ini.
-                </p>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>Meja</th>
-                                <th>Nama</th>
-                                <th>Status</th>
-                                <th>Rincian</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tabelAntrianSelesai">
-                            <tr>
-                                <td>21392031</td>
-                                <td>Wahyu</td>
-                                <td>Selesai</td>
-                                <td><button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalRincinan">Rincian</button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
