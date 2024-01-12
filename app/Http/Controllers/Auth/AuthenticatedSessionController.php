@@ -31,7 +31,8 @@ class AuthenticatedSessionController extends Controller
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended(RouteServiceProvider::HOME);
         } elseif (Auth::guard('pelanggan')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('menus.show');
+            
+        return redirect()->route('menus.index');
         }
         return redirect()->route('/menus');
     }

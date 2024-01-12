@@ -54,7 +54,7 @@ class RegisteredKedaiController extends Controller
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
         ]);
-        return redirect('kedai/login');
+        return view('langganan.index', compact('paketLangganan'));
         // event(new Registered($kedai));
 
         // Auth::login($kedai);

@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Subscription extends Model
+class Langganan extends Model
 {
-    protected $guard = ['id'];
+    protected $fillable = ['user_id',
+    'paket_langganan_id',
+    'status',
+    'start_date',
+    'end_date'];
 
     public function user()
     {

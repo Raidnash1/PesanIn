@@ -47,6 +47,63 @@
     </style>
 </head>
 <body>
+
+    <header class="py-3 border-bottom d-none d-sm-none d-md-none d-lg-block bg-white sticky-top">
+        <div class="container d-flex flex-wrp justify-content-center">
+            <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+                <span class="fs-3 fw-bold">PesanIn</span>
+            </a>
+
+            @auth
+                <ul class="nav me-auto">
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2 active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2">Dashboard</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="{{ route('menus.index') }}" class="nav-link link-dark text-grey px-2">Menu</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a href="/" class="nav-link link-dark text-grey px-2">Transaksi</a>
+                    </li>
+                        {{-- Check if cart is not empty --}}
+
+    @if(Auth::guard('pelanggan')->check())
+    <li class="nav-item me-2">
+        <a href="{{ route('cart', Auth::guard('pelanggan')->id()) }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
+    </li>
+    @else
+    <li class="nav-item me-2">
+        <a href="{{ route('pelanggan.login') }}" class="nav-link link-dark text-grey px-2">Keranjang</a>
+    </li>
+    @endif
+                </ul>
+
+                <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
+                    {{-- <a class="nav-link link-dark text-grey px-2 me-2" href="{{ route('cart/id') }}">Keranjang</a> --}}
+                </span>
+                <span class="d-flex align-items-center mb-3 mb-lg-0 text-dark">
+                    <a class="text-decoration-none" href="{{ route('logout') }}" onclick=" event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                </span>
+            @endauth
+
+            @guest
+                <button class="btn btn-warning text-white me-2 px-5 fw-500"
+                    onclick="location.href='{{ route('login') }}'" type="button">
+                    <i class="fas"></i> Masuk </button>
+                <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
+                    onclick="location.href='{{ route('register') }}'" type="button"> <i class="fas"></i>
+                    Daftar
+                </button>
+            @endguest
+        </div>
+    </header>
+
 <div class="container-sm float-left pt-5">
     <div class="row">
         <div class="col-sm-8">

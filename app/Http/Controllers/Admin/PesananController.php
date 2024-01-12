@@ -13,14 +13,60 @@ class PesananController extends Controller
     public function index()
     {
         // Ambil data pesanan dari database
-        $orderModel = new Order();
-        $orders['orders'] = $orderModel->get();
-        
-
+        $orders['orders'] = Order::all();
         // Tampilkan view index_order dengan data pesanan
         return view('admin.pesanan.index', $orders);
     }
+    public function pembayaran()
+    {
+        // Ambil data pesanan dari database
+        // Ambil data pesanan dari database dengan status = 1
+    $orders['orders'] = Order::where('status', 1)->get();
+        // Tampilkan view index_order dengan data pesanan
+        return view('admin.pesanan.index', $orders);
+    }
+    public function dimasak()
+    {
+        // Ambil data pesanan dari database
+        // Ambil data pesanan dari database dengan status = 1
+    $orders['orders'] = Order::where('status', 3)->get();
+        // Tampilkan view index_order dengan data pesanan
+        return view('admin.pesanan.index', $orders);
+    }
+    public function antri()
+    {
+        // Ambil data pesanan dari database
+        $orders['orders'] = Order::where('status', 2)->get();
+        // Tampilkan view index_order dengan data pesanan
+        return view('admin.pesanan.index', $orders);
+    }
+    public function selesai()
+    {
+        // Ambil data pesanan dari database
+        $orders['orders'] = Order::where('status', 4)->get();
+        // Tampilkan view index_order dengan data pesanan
+        return view('admin.pesanan.index', $orders);
+    }
+    public function updateStatus($orderId)
+    {
+        // Temukan pesanan berdasarkan ID
+        $order = Order::find($orderId);
 
+        // Periksa apakah pesanan ditemukan
+        if (!$order) {
+            // Tambahkan logika atau respons sesuai kebutuhan Anda
+            return redirect()->back()->with('error', 'Pesanan tidak ditemukan');
+        }
+
+        // Ambil status saat ini dan tambahkan 1
+        $newStatus = $order->status + 1;
+
+        // Update status pesanan
+        $order->update(['status' => $newStatus]);
+
+        // Tambahkan logika atau respons sesuai kebutuhan Anda
+        return redirect()->back()->with('success', 'Status pesanan diperbarui');
+    }
     public function dataAntrian()
     {
         echo json_encode(Order::where('status', '!=', 2)->get());

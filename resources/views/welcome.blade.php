@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ $paket->nama_paket }}</h5>
                                 <p class="card-text">{{ $paket->description }}</p>
-                                <a href="{{ Auth::check() ? route('Langganan', ['id' => $paket->id]) : route('register') }}" class="btn btn-primary">{{ $paket->type == 'free' ? 'Gratis' : 'Berlangganan' }}</a>
+                                <a href="{{ route('register') }}" class="btn btn-primary">Berlangganan</a>
                             </div>
                         </div>
                     </div>

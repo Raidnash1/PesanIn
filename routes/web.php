@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\WelcomeController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\MenuController as FrontendMenuController;
 use App\Http\Controllers\Frontend\CategoryController as FrontendCategoryController;
+use App\Http\Controllers\Frontend\LanggananController as FrontendLanggananController;;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/categories', [FrontendCategoryController::class, 'index'])->name('categories.index');
@@ -27,24 +28,32 @@ Route::post('/carts/checkout', [CartController::class, 'checkout'])->name('cart.
 Route::get('orders', [OrderController::class, 'index']);
 Route::get('/invoice/{id}', [OrderController::class, 'invoice']);
 
+Route::get('/langganan', [FrontendLanggananController::class, 'index'])->name('langganan.index');
+// Route::post('/berlangganan', [FrontendLanggananController::class, 'berlangganan'])->name('berlangganan');
+Route::post('/carts/berlangganan', [CartController::class, 'berlangganan'])->name('cart.berlangganan');
+Route::get('/carts/berlangganan/succes', [CartController::class, 'berlanggananSucces'])->name('carts.berlangganan.succes');
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-// Route::middleware(['check.role', 'auth', 'admin'])->group(function () {
-//     Route::prefix('{username}/admin')->name('admin.')->group(function () {
-//         Route::get('/', [AdminController::class, 'index'])->name('index');
-//         Route::resource('/categories', CategoryController::class);
-//         Route::resource('/menus', MenuController::class);
-//         Route::resource('/tables', TableController::class);
-//         Route::resource('/reservations', ReservationController::class);
-//     });
-// });
+Route::middleware(['check.role', 'auth', 'admin'])->group(function () {
+    Route::prefix('{username}/admin')->name('admin.')->group(function () {
+        Route::get('/', [AdminController::class, 'index'])->name('index');
+        Route::resource('/categories', CategoryController::class);
+        Route::resource('/menus', MenuController::class);
+        Route::resource('/tables', TableController::class);
+        Route::resource('/reservations', ReservationController::class);
+    });
+});
 Route::get('/pesanan', [PesananController::class, 'index']);
-Route::post('/pesanan/dataAntrian', [PesananController::class, 'dataAntrian']);
-Route::post('/pesanan/dataAntrianSelesai', [PesananController::class, 'dataAntrianSelesai']);
-Route::post('/pesanan/proses', [PesananController::class, 'proses']);
-Route::post('/pesanan/rincianPesanan', [PesananController::class, 'rincianPesanan']);
+Route::get('/pesanan/pembayaran', [PesananController::class, 'pembayaran']);
+Route::get('/pesanan/antri', [PesananController::class, 'antri']);
+Route::get('/pesanan/dimasak', [PesananController::class, 'dimasak']);
+Route::get('/pesanan/selesai', [PesananController::class, 'selesai']);
+Route::get('/ubah-status/{orderId}', [PesananController::class, 'updateStatus'])->name('ubah-status');
+
+
+
 Route::middleware(['auth', 'check.role:1'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories', CategoryController::class);

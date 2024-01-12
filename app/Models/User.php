@@ -26,6 +26,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Menu::class);
     }
+    public function langganan()
+    {
+        return $this->hasMany(Langganan::class,  'id_langganan');
+    }
 
     protected $guarded = [
         'id'

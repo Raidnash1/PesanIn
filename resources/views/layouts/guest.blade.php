@@ -143,12 +143,14 @@
 
             @guest
                 <button class="btn btn-warning text-white me-2 px-5 fw-500"
-                    onclick="location.href='{{ route('pelanggan.login') }}'" type="button">
+                    onclick="location.href='{{ route('login') }}'" type="button">
                     <i class="fas"></i> Masuk </button>
                 <button class="btn btn-warning-outline text-warning me-2 px-5 fw-500"
                     onclick="location.href='{{ route('register') }}'" type="button"> <i class="fas"></i>
                     Daftar
                 </button>
+                
+                
             @endguest
         </div>
     </header>

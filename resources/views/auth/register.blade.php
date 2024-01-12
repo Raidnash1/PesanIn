@@ -50,7 +50,7 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="text" id="nama_user" name="nama_user"
-                                    placeholder="Raid Nash" autofocus required>
+                                    placeholder="Raid Nash" autofocus required value="admin">
                             </div>
                             <label class="col-form-label">Alamat Email</label>
                             <div class="input-group mb-3">
@@ -67,7 +67,7 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="email" name="email" placeholder="contoh@gmail.com"
-                                    autofocus required>
+                                    autofocus required value="admin@gmail.com">
                             </div>
 
                             <label class="col-form-label">Password</label>
@@ -86,7 +86,7 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="password" name="password" required
-                                    placeholder="*********">
+                                    value="11111111">
                             </div>
 
                             <label class="col-form-label">Password confirm</label>
@@ -105,7 +105,7 @@
                                     </span>
                                 </div>
                                 <input class="form-control" type="password" name="password_confirmation"
-                                    id="password_confirmation" required placeholder="*********">
+                                    id="password_confirmation" required value="11111111">
                             </div>
                             
 

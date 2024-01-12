@@ -9,6 +9,90 @@
 <link rel="stylesheet" type="text/css" href="{{ url('cuba/assets/css/vendors/datatable-extension.css') }}">
 @endpush
 
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="dt-ext table-responsive">
+                    <table class="display" id="auto-fill">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Menu</th>
+                                <th>Pelanggan</th>
+                                <th>Quantity</th>
+                                <th>Total Harga</th>
+                                <th>Status</th>
+                                <th>Ubah</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabelAntrian">
+                            @foreach ($orders as $order)
+                            <tr>
+                                <td>{{ $order->id }}</td>
+                                <td>{{ $order->menu->name }}</td>
+                                <td>{{ $order->pelanggan->nama }}</td>
+                                <td>{{ $order->quantity }}</td>
+                                <td>{{ $order->total_harga }}</td>
+                                @if ($order->status == 1)
+                                    <td>Menunggu Pembayaran</td>
+                                @elseif ($order->status == 2)
+                                    <td>Antri</td>
+                                @elseif ($order->status == 3)
+                                    <td>Dimasak</td>
+                                @elseif ($order->status == 4)
+                                    <td>Selesai</td>
+                                @endif
+                                <td><a href="{{ route('ubah-status', $order->id) }}"
+                                    class="btn btn-info px-2"><svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-edit" width="16"
+                                    height="16" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3">
+                                    </path>
+                                    <path d="M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3"></path>
+                                    <line x1="16" y1="5" x2="19" y2="8">
+                                    </line>
+                                </svg></a>
+                                    <button class="btn btn-danger px-2 btn-ubah" onclick="ubahStatus('{{ route('ubah-status', $order->id) }}')"><svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-trash" width="16"
+                                        height="16" viewBox="0 0 24 24" stroke-width="2"
+                                        stroke="currentColor" fill="none" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <line x1="4" y1="7" x2="20"
+                                            y2="7"></line>
+                                        <line x1="10" y1="11" x2="10"
+                                            y2="17"></line>
+                                        <line x1="14" y1="11" x2="14"
+                                            y2="17"></line>
+                                        <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
+                                        <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
+                                    </svg></button></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Menu</th>
+                                <th>Pelanggan</th>
+                                <th>Quantity</th>
+                                <th>Total Harga</th>
+                                <th>Status</th>
+                                <th>Ubah</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- 
 <div class="row py-4">
     <div class="col-lg-12 grid-margin">
         <div class="card">
@@ -41,9 +125,13 @@
                                 @if ($order->status == 1)
                                     <td>Menunggu Pembayaran</td>
                                 @elseif ($order->status == 2)
-                                    <td>Lunas</td>
+                                    <td>Antri</td>
+                                @elseif ($order->status == 3)
+                                    <td>Dimasak</td>
+                                @elseif ($order->status == 4)
+                                    <td>Selesai</td>
                                 @endif
-                                <td><button class="btn btn-success text-dark">Ubah</button></td>
+                                <td><button class="btn btn-success text-dark btn-ubah" onclick="ubahStatus('{{ route('ubah-status', $order->id) }}')">Ubah status</button></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -52,7 +140,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 <!-- Modal -->
 <div class="modal fade" id="modalRincian" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -126,7 +214,13 @@
         </div>
     </div>
 </div>
-
+<script>
+    function ubahStatus(route) {
+        if (confirm('Apakah Anda yakin ingin mengubah status?')) {
+            location.href = route;
+        }
+    }
+</script>
 <script>
     tampilkanAntrian()
     tampilkanAntrianSelesai()
@@ -259,6 +353,51 @@
         return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
     }
 </script>
+<script>
+    function ubahStatus(orderId) {
+        // Mengambil elemen status berdasarkan ID order
+        const statusElement = document.getElementById(`status-${orderId}`);
+    
+        // Memastikan elemen status ditemukan
+        if (!statusElement) {
+            console.error('Element status tidak ditemukan');
+            return;
+        }
+    
+        // Mendapatkan status saat ini dari elemen HTML
+        const currentStatus = statusElement.innerText;
+    
+        // Mengirim permintaan Ajax untuk memperbarui status di server
+        fetch(orderId, {
+            method: 'POST', // atau 'PUT' tergantung pada metode yang digunakan di backend Anda
+            headers: {
+                'Content-Type': 'application/json',
+                // Mungkin Anda perlu menambahkan header lain sesuai kebutuhan
+            },
+            body: JSON.stringify({
+                // Data yang ingin Anda kirim ke server, misalnya status baru
+                newStatus: incrementStatus(currentStatus), // Menggunakan fungsi untuk menambah 1 ke status
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update status di tampilan HTML setelah mendapatkan respons dari server
+            statusElement.innerText = data.newStatus;
+        })
+        .catch(error => {
+            console.error('Terjadi kesalahan:', error);
+        });
+    }
+    
+    // Fungsi untuk menambah 1 ke status
+    function incrementStatus(currentStatus) {
+        // Menggunakan parsing string ke integer dan menambahkan 1
+        const newStatus = parseInt(currentStatus) + 1;
+    
+        // Mengembalikan hasil sebagai string
+        return newStatus.toString();
+    }
+    </script>
 
 @push('datatable-scripts')
             <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> -->

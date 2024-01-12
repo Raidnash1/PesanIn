@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('nama_paket');
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
-            $table->enum('type', ['free', 'monthly'])->default('free');
+            $table->enum('type', ['Silver', 'Gold'])->default('Silver');
             $table->timestamps();
         });
     }

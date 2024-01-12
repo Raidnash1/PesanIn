@@ -44,8 +44,10 @@ class PelangganAuthController extends Controller
         if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended(RouteServiceProvider::HOME);
         } elseif (Auth::guard('pelanggan')->attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('menus.index');
+            $user_id = auth()->guard('pelanggan')->user()->user_id;
+        return redirect()->route('menus.index', ['user_id' => $user_id]);
         }
+
         return redirect()->route('pelanggan.login');
     }
 

@@ -96,22 +96,22 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/transaction">
+                            <a href="/pesanan/pembayaran">
                                 Menunggu Pembayaran
                             </a>
                         </li>
                         <li>
-                            <a href="/transaction">
+                            <a href="/pesanan/antri">
                                 Antri
                             </a>
                         </li>
                         <li>
-                            <a href="/transaction">
+                            <a href="/pesanan/dimasak">
                                 Dimasak
                             </a>
                         </li>
                         <li>
-                            <a href="/transaction">
+                            <a href="/pesanan/selesai">
                                 Selesai
                             </a>
                         </li>
