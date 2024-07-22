@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
             
         return redirect()->route('menus.index');
         }
-        return redirect()->route('/menus');
+        return redirect()->route('menus.index');
     }
 
 
